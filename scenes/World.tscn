@@ -261,7 +261,10 @@ tile_proxies/coords_level = [[0, Vector2i(0, 0)], [81, Vector2i(0, 0)], [0, Vect
 [node name="CharacterBody2D" parent="." unique_id=375027641 instance=ExtResource("1_kqs1s")]
 position = Vector2(0, -126.000015)
 
-[node name="Camera2D" type="Camera2D" parent="." unique_id=559551455]
+[node name="Camera2D" type="Camera2D" parent="CharacterBody2D" unique_id=559551455]
+position = Vector2(0, -311.11096)
+scale = Vector2(11.111112, 11.111112)
+position_smoothing_enabled = true
 
 [node name="TilesScene" type="TileMap" parent="." unique_id=1013740147]
 tile_set = SubResource("TileSet_xh2dl")
