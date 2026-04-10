@@ -1,0 +1,46 @@
+[gd_scene format=3 uid="uid://cfurdengunsyc"]
+
+[ext_resource type="Script" uid="uid://c4ksjcrelv2rw" path="res://scripts/player.gd" id="1_nmc1l"]
+[ext_resource type="Texture2D" uid="uid://d0baevfurjxtk" path="res://assets/entities/asset 1/prisoner1/playeridle.png" id="1_uxov2"]
+[ext_resource type="Texture2D" uid="uid://cajn70bbpey7c" path="res://assets/entities/asset 1/prisoner1/playerrun1.png" id="2_nmc1l"]
+[ext_resource type="Texture2D" uid="uid://cu1qp28yetco0" path="res://assets/entities/asset 1/prisoner1/playerrun2.png" id="3_f46kd"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_3rerk"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_uxov2")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_nmc1l")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_f46kd")
+}],
+"loop": false,
+"name": &"move",
+"speed": 6.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_i825w"]
+radius = 207.0
+height = 722.0
+
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=375027641]
+scale = Vector2(0.09, 0.09)
+script = ExtResource("1_nmc1l")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1618384187]
+position = Vector2(5, -405)
+sprite_frames = SubResource("SpriteFrames_3rerk")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1063390742]
+position = Vector2(16, -363)
+shape = SubResource("CapsuleShape2D_i825w")
