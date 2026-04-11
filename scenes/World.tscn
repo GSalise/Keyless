@@ -265,47 +265,62 @@ tile_proxies/coords_level = [[0, Vector2i(0, 0)], [81, Vector2i(0, 0)], [0, Vect
 
 [node name="ParallaxBackground" type="ParallaxBackground" parent="." unique_id=1005578797]
 
-[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground" unique_id=457644634]
-position = Vector2(4, -150)
+[node name="ParallaxLayer" type="ParallaxLayer" parent="ParallaxBackground" unique_id=1204379705]
+position = Vector2(-16, -74)
+scale = Vector2(1, 1.36)
 motion_mirroring = Vector2(1440, 0)
 
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer" unique_id=1150449546]
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer" unique_id=1130657735]
+position = Vector2(4, -169)
+scale = Vector2(-2.7203684, 2.2523496)
 texture = ExtResource("1_b3faq")
 
-[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground" unique_id=310966403]
-position = Vector2(4, -150)
+[node name="ParallaxLayer2" type="ParallaxLayer" parent="ParallaxBackground" unique_id=656391939]
+position = Vector2(-16, -74)
+scale = Vector2(1, 1.36)
 motion_mirroring = Vector2(1440, 0)
 
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2" unique_id=342163851]
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer2" unique_id=619007359]
+position = Vector2(4, -169)
+scale = Vector2(-2.7203684, 2.2523496)
 texture = ExtResource("2_ygioq")
 
-[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground" unique_id=104375385]
-position = Vector2(4, -150)
-motion_mirroring = Vector2(1440, 0)
+[node name="ParallaxLayer3" type="ParallaxLayer" parent="ParallaxBackground" unique_id=77563838]
+position = Vector2(-16, -74)
+scale = Vector2(1, 1.36)
+motion_offset = Vector2(1440, 0)
 
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3" unique_id=389652481]
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer3" unique_id=1758696317]
+position = Vector2(4, -169)
+scale = Vector2(-2.7203684, 2.2523496)
 texture = ExtResource("3_pdh0q")
 
-[node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground" unique_id=611709172]
-position = Vector2(4, -150)
+[node name="ParallaxLayer4" type="ParallaxLayer" parent="ParallaxBackground" unique_id=1625910432]
+position = Vector2(-16, -74)
+scale = Vector2(1, 1.36)
 motion_mirroring = Vector2(1440, 0)
 
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer4" unique_id=89994082]
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer4" unique_id=1323946498]
+position = Vector2(4, -169)
+scale = Vector2(-2.7203684, 2.2523496)
 texture = ExtResource("4_h1bdy")
 
-[node name="ParallaxLayer5" type="ParallaxLayer" parent="ParallaxBackground" unique_id=855628712]
-position = Vector2(4, -150)
+[node name="ParallaxLayer5" type="ParallaxLayer" parent="ParallaxBackground" unique_id=24210196]
+position = Vector2(-16, -74)
+scale = Vector2(1, 1.36)
 motion_mirroring = Vector2(1440, 0)
 
-[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer5" unique_id=750554916]
+[node name="Sprite2D" type="Sprite2D" parent="ParallaxBackground/ParallaxLayer5" unique_id=764177351]
+position = Vector2(4, -169)
+scale = Vector2(-2.7203684, 2.2523496)
 texture = ExtResource("5_7c4bj")
 
 [node name="CharacterBody2D" parent="." unique_id=375027641 instance=ExtResource("1_kqs1s")]
 position = Vector2(0, -126.000015)
 
 [node name="Camera2D" type="Camera2D" parent="CharacterBody2D" unique_id=559551455]
-position = Vector2(0, -311.11096)
-scale = Vector2(11.111112, 11.111112)
+position = Vector2(22.222221, -266.6665)
+scale = Vector2(518.76746, 5942.194)
 position_smoothing_enabled = true
 
 [node name="TilesScene" type="TileMap" parent="." unique_id=1013740147]
