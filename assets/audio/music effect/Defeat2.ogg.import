@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://deyv7up8lifty"
+path="res://.godot/imported/Defeat2.ogg-c8db0ed5fcdb2ea8ff9ec24093e51bb1.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/audio/music effect/Defeat2.ogg"
+dest_files=["res://.godot/imported/Defeat2.ogg-c8db0ed5fcdb2ea8ff9ec24093e51bb1.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

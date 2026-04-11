@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://dumkemj4fgu34"
+path="res://.godot/imported/Fanfare2.ogg-40b567dbd6dee20c88d806247357382a.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/audio/music effect/Fanfare2.ogg"
+dest_files=["res://.godot/imported/Fanfare2.ogg-40b567dbd6dee20c88d806247357382a.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

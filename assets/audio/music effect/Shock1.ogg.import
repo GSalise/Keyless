@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://mv0jdacbwct8"
+path="res://.godot/imported/Shock1.ogg-0efc5ce1b6a0a6904441d6631d0d211b.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/audio/music effect/Shock1.ogg"
+dest_files=["res://.godot/imported/Shock1.ogg-0efc5ce1b6a0a6904441d6631d0d211b.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

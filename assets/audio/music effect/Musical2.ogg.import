@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://desih6qmlnbsl"
+path="res://.godot/imported/Musical2.ogg-56baad10de81ce671054461682dab94f.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/audio/music effect/Musical2.ogg"
+dest_files=["res://.godot/imported/Musical2.ogg-56baad10de81ce671054461682dab94f.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

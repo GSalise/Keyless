@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://b5vqbobawuaru"
+path="res://.godot/imported/Gameover2.ogg-9bceba4cfde997e1832cb49db91efb99.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/audio/music effect/Gameover2.ogg"
+dest_files=["res://.godot/imported/Gameover2.ogg-9bceba4cfde997e1832cb49db91efb99.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4

@@ -1,0 +1,19 @@
+[remap]
+
+importer="oggvorbisstr"
+type="AudioStreamOggVorbis"
+uid="uid://bkn5p0vxpmswt"
+path="res://.godot/imported/Alexandr Zhelanov-Caves of Sorrow.ogg-bf3cbcb1057c22e94c1247b4b9e62400.oggvorbisstr"
+
+[deps]
+
+source_file="res://assets/audio/bgmusic/Alexandr Zhelanov-Caves of Sorrow.ogg"
+dest_files=["res://.godot/imported/Alexandr Zhelanov-Caves of Sorrow.ogg-bf3cbcb1057c22e94c1247b4b9e62400.oggvorbisstr"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
