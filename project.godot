@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="Keyless"
-run/main_scene="uid://c2ex0kg5amvua"
+run/main_scene="uid://ce84bewuvnhor"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
 
