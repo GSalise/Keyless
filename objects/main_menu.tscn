@@ -1,0 +1,141 @@
+[gd_scene format=3 uid="uid://ce84bewuvnhor"]
+
+[ext_resource type="Script" uid="uid://bmhexchwrmojb" path="res://objects/main_menu.gd" id="1_j4vu4"]
+[ext_resource type="Texture2D" uid="uid://b7gwv7w6a33nb" path="res://assets/background/industrial/Background.png" id="2_3fb3l"]
+[ext_resource type="FontFile" uid="uid://baqhs3crp16yo" path="res://assets/font/Gwenchana.ttf" id="3_kxicu"]
+
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nejgq"]
+texture = ExtResource("2_3fb3l")
+modulate_color = Color(0.3403393, 0.34033936, 0.34033918, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_57rgk"]
+bg_color = Color(0.76240367, 0.76240367, 0.76240367, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(0, 0, 0, 0.20392157)
+shadow_size = 5
+shadow_offset = Vector2(0, 3.14)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hover"]
+bg_color = Color(0.92, 0.92, 0.92, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(0, 0, 0, 0.28)
+shadow_size = 7
+shadow_offset = Vector2(0, 4)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pressed"]
+bg_color = Color(0.66, 0.66, 0.66, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(0, 0, 0, 0.18)
+shadow_size = 3
+shadow_offset = Vector2(0, 2)
+
+[sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_t2tg1"]
+
+[node name="MainMenu" type="Control" unique_id=734443422]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_j4vu4")
+
+[node name="Panel" type="Panel" parent="." unique_id=963146377]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxTexture_nejgq")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1129648283]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -295.25
+offset_top = -59.0
+offset_right = 295.25
+offset_bottom = 201.5
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 14
+
+[node name="Start" type="Button" parent="VBoxContainer" unique_id=1202807044]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_57rgk")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_pressed")
+theme_override_styles/hover = SubResource("StyleBoxFlat_hover")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_t2tg1")
+text = "Start game"
+
+[node name="World" type="Button" parent="VBoxContainer" unique_id=1428105528]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_57rgk")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_pressed")
+theme_override_styles/hover = SubResource("StyleBoxFlat_hover")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_t2tg1")
+text = "World
+"
+
+[node name="Exit" type="Button" parent="VBoxContainer" unique_id=549841537]
+layout_mode = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 30
+theme_override_styles/normal = SubResource("StyleBoxFlat_57rgk")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_pressed")
+theme_override_styles/hover = SubResource("StyleBoxFlat_hover")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_t2tg1")
+text = "Exit
+
+"
+
+[node name="Label" type="Label" parent="." unique_id=487108426]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -252.5
+offset_top = 72.0
+offset_right = 252.5
+offset_bottom = 209.0
+grow_horizontal = 2
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0)
+theme_override_constants/shadow_offset_y = 10
+theme_override_fonts/font = ExtResource("3_kxicu")
+theme_override_font_sizes/font_size = 119
+text = "Keyless"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[connection signal="pressed" from="VBoxContainer/Start" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="VBoxContainer/World" to="." method="_on_world_pressed"]
+[connection signal="pressed" from="VBoxContainer/Exit" to="." method="_on_exit_pressed"]
