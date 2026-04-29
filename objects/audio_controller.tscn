@@ -1,0 +1,14 @@
+[gd_scene format=3 uid="uid://b3vjhtbugq11c"]
+
+[ext_resource type="Script" uid="uid://brssntbqw41n1" path="res://objects/audio_controller.gd" id="1_0rbf2"]
+[ext_resource type="AudioStream" uid="uid://dc4bcb08ms0v" path="res://assets/audio/player movement/FootStep/Retro FootStep 03.wav" id="2_hv1yd"]
+[ext_resource type="AudioStream" uid="uid://bvvjkxmpveoq7" path="res://assets/audio/player movement/Bounce Jump/Retro Jump Simple A 01.wav" id="3_46cmc"]
+
+[node name="AudioController" type="Node2D" unique_id=444956114]
+script = ExtResource("1_0rbf2")
+
+[node name="Run" type="AudioStreamPlayer2D" parent="." unique_id=1904692750]
+stream = ExtResource("2_hv1yd")
+
+[node name="Jump" type="AudioStreamPlayer2D" parent="." unique_id=382891032]
+stream = ExtResource("3_46cmc")

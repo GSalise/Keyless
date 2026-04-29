@@ -2,7 +2,6 @@
 
 [ext_resource type="Script" uid="uid://bmhexchwrmojb" path="res://objects/main_menu.gd" id="1_j4vu4"]
 [ext_resource type="Texture2D" uid="uid://b7gwv7w6a33nb" path="res://assets/background/industrial/Background.png" id="2_3fb3l"]
-[ext_resource type="FontFile" uid="uid://baqhs3crp16yo" path="res://assets/font/Gwenchana.ttf" id="3_kxicu"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nejgq"]
 texture = ExtResource("2_3fb3l")
@@ -40,8 +39,22 @@ shadow_offset = Vector2(0, 2)
 
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_t2tg1"]
 
-[node name="MainMenu" type="Control" unique_id=734443422]
-layout_mode = 3
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_options"]
+bg_color = Color(0.07, 0.09, 0.12, 0.72)
+corner_radius_top_left = 22
+corner_radius_top_right = 22
+corner_radius_bottom_right = 22
+corner_radius_bottom_left = 22
+border_width_left = 1
+border_width_top = 1
+border_width_right = 1
+border_width_bottom = 1
+border_color = Color(1, 1, 1, 0.14)
+shadow_color = Color(0, 0, 0, 0.35)
+shadow_size = 12
+shadow_offset = Vector2(0, 3)
+
+[node name="MainMenu" type="Control"]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -49,8 +62,7 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_j4vu4")
 
-[node name="Panel" type="Panel" parent="." unique_id=963146377]
-layout_mode = 1
+[node name="Panel" type="Panel" parent="."]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -58,23 +70,35 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_nejgq")
 
-[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=1129648283]
-layout_mode = 1
+[node name="Title" type="Label" parent="."]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -260.0
+offset_top = 72.0
+offset_right = 260.0
+offset_bottom = 190.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 110
+text = "Keyless"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="MainButtons" type="VBoxContainer" parent="."]
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
 offset_left = -295.25
-offset_top = -59.0
+offset_top = -40.0
 offset_right = 295.25
-offset_bottom = 201.5
+offset_bottom = 220.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 14
 
-[node name="Start" type="Button" parent="VBoxContainer" unique_id=1202807044]
-layout_mode = 2
+[node name="StartGame" type="Button" parent="MainButtons"]
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
@@ -85,10 +109,9 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_57rgk")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_pressed")
 theme_override_styles/hover = SubResource("StyleBoxFlat_hover")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_t2tg1")
-text = "Start game"
+text = "Start Game"
 
-[node name="World" type="Button" parent="VBoxContainer" unique_id=1428105528]
-layout_mode = 2
+[node name="Settings" type="Button" parent="MainButtons"]
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
@@ -99,11 +122,9 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_57rgk")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_pressed")
 theme_override_styles/hover = SubResource("StyleBoxFlat_hover")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_t2tg1")
-text = "World
-"
+text = "Settings"
 
-[node name="Exit" type="Button" parent="VBoxContainer" unique_id=549841537]
-layout_mode = 2
+[node name="Exit" type="Button" parent="MainButtons"]
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
@@ -114,28 +135,94 @@ theme_override_styles/normal = SubResource("StyleBoxFlat_57rgk")
 theme_override_styles/pressed = SubResource("StyleBoxFlat_pressed")
 theme_override_styles/hover = SubResource("StyleBoxFlat_hover")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_t2tg1")
-text = "Exit
+text = "Exit"
 
-"
-
-[node name="Label" type="Label" parent="." unique_id=487108426]
-layout_mode = 1
-anchors_preset = 5
+[node name="Options" type="Panel" parent="."]
+visible = false
+anchors_preset = 8
 anchor_left = 0.5
+anchor_top = 0.5
 anchor_right = 0.5
-offset_left = -252.5
-offset_top = 72.0
-offset_right = 252.5
-offset_bottom = 209.0
+anchor_bottom = 0.5
+offset_left = -370.5
+offset_top = -150.0
+offset_right = 370.5
+offset_bottom = 260.0
 grow_horizontal = 2
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 0)
-theme_override_constants/shadow_offset_y = 10
-theme_override_fonts/font = ExtResource("3_kxicu")
-theme_override_font_sizes/font_size = 119
-text = "Keyless"
+grow_vertical = 2
+theme_override_styles/panel = SubResource("StyleBoxFlat_options")
+
+[node name="OptionsTitle" type="Label" parent="Options"]
+anchors_preset = 10
+anchor_right = 1.0
+offset_top = 24.0
+offset_bottom = 80.0
+grow_horizontal = 2
+theme_override_font_sizes/font_size = 40
+text = "Settings"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[connection signal="pressed" from="VBoxContainer/Start" to="." method="_on_start_pressed"]
-[connection signal="pressed" from="VBoxContainer/World" to="." method="_on_world_pressed"]
-[connection signal="pressed" from="VBoxContainer/Exit" to="." method="_on_exit_pressed"]
+[node name="SettingsVBox" type="VBoxContainer" parent="Options"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 56.0
+offset_top = 108.0
+offset_right = -56.0
+offset_bottom = -88.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 16
+
+[node name="MusicLabel" type="Label" parent="Options/SettingsVBox"]
+theme_override_font_sizes/font_size = 24
+theme_override_colors/font_color = Color(0.92, 0.95, 1, 1)
+text = "Music Volume"
+
+[node name="MusicSlider" type="HSlider" parent="Options/SettingsVBox"]
+custom_minimum_size = Vector2(0, 30)
+max_value = 1.0
+step = 0.01
+value = 0.8
+
+[node name="SfxLabel" type="Label" parent="Options/SettingsVBox"]
+theme_override_font_sizes/font_size = 24
+theme_override_colors/font_color = Color(0.92, 0.95, 1, 1)
+text = "SFX Volume"
+
+[node name="SfxSlider" type="HSlider" parent="Options/SettingsVBox"]
+custom_minimum_size = Vector2(0, 30)
+max_value = 1.0
+step = 0.01
+value = 0.8
+
+[node name="Back" type="Button" parent="Options"]
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -120.0
+offset_top = -62.0
+offset_right = 120.0
+offset_bottom = -20.0
+grow_horizontal = 2
+size_flags_vertical = 3
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
+theme_override_colors/font_pressed_color = Color(0, 0, 0, 1)
+theme_override_colors/font_hover_color = Color(0, 0, 0, 1)
+theme_override_font_sizes/font_size = 28
+theme_override_styles/normal = SubResource("StyleBoxFlat_57rgk")
+theme_override_styles/pressed = SubResource("StyleBoxFlat_pressed")
+theme_override_styles/hover = SubResource("StyleBoxFlat_hover")
+theme_override_styles/focus = SubResource("StyleBoxEmpty_t2tg1")
+text = "Back"
+
+[connection signal="pressed" from="MainButtons/StartGame" to="." method="_on_start_pressed"]
+[connection signal="pressed" from="MainButtons/Settings" to="." method="_on_settings_pressed"]
+[connection signal="pressed" from="MainButtons/Exit" to="." method="_on_exit_pressed"]
+[connection signal="pressed" from="Options/Back" to="." method="_on_back_options_pressed"]
+[connection signal="value_changed" from="Options/SettingsVBox/MusicSlider" to="." method="_on_music_slider_value_changed"]
+[connection signal="value_changed" from="Options/SettingsVBox/SfxSlider" to="." method="_on_sfx_slider_value_changed"]

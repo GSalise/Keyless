@@ -11,9 +11,13 @@ config_version=5
 [application]
 
 config/name="Keyless"
-run/main_scene="uid://ce84bewuvnhor"
+run/main_scene="uid://3k5qgj72gf05"
 config/features=PackedStringArray("4.6", "Forward Plus")
 config/icon="res://icon.svg"
+
+[autoload]
+
+BgMusic="*uid://b5lns3r3immna"
 
 [input]
 

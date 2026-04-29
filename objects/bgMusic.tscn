@@ -1,0 +1,7 @@
+[gd_scene format=3 uid="uid://b5lns3r3immna"]
+
+[ext_resource type="AudioStream" uid="uid://bkn5p0vxpmswt" path="res://assets/audio/bgmusic/Alexandr Zhelanov-Caves of Sorrow.ogg" id="1_m4ja7"]
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" unique_id=172815474]
+stream = ExtResource("1_m4ja7")
+autoplay = true
