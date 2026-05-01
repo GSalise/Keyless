@@ -2,10 +2,15 @@
 
 [ext_resource type="Script" uid="uid://bmhexchwrmojb" path="res://objects/main_menu.gd" id="1_j4vu4"]
 [ext_resource type="Texture2D" uid="uid://b7gwv7w6a33nb" path="res://assets/background/industrial/Background.png" id="2_3fb3l"]
+[ext_resource type="FontFile" uid="uid://baqhs3crp16yo" path="res://assets/font/Gwenchana.ttf" id="3_j4vu4"]
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_nejgq"]
 texture = ExtResource("2_3fb3l")
 modulate_color = Color(0.3403393, 0.34033936, 0.34033918, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_3fb3l"]
+font = ExtResource("3_j4vu4")
+font_size = 150
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_57rgk"]
 bg_color = Color(0.76240367, 0.76240367, 0.76240367, 1)
@@ -17,16 +22,6 @@ shadow_color = Color(0, 0, 0, 0.20392157)
 shadow_size = 5
 shadow_offset = Vector2(0, 3.14)
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hover"]
-bg_color = Color(0.92, 0.92, 0.92, 1)
-corner_radius_top_left = 16
-corner_radius_top_right = 16
-corner_radius_bottom_right = 16
-corner_radius_bottom_left = 16
-shadow_color = Color(0, 0, 0, 0.28)
-shadow_size = 7
-shadow_offset = Vector2(0, 4)
-
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_pressed"]
 bg_color = Color(0.66, 0.66, 0.66, 1)
 corner_radius_top_left = 16
@@ -37,24 +32,35 @@ shadow_color = Color(0, 0, 0, 0.18)
 shadow_size = 3
 shadow_offset = Vector2(0, 2)
 
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_hover"]
+bg_color = Color(0.92, 0.92, 0.92, 1)
+corner_radius_top_left = 16
+corner_radius_top_right = 16
+corner_radius_bottom_right = 16
+corner_radius_bottom_left = 16
+shadow_color = Color(0, 0, 0, 0.28)
+shadow_size = 7
+shadow_offset = Vector2(0, 4)
+
 [sub_resource type="StyleBoxEmpty" id="StyleBoxEmpty_t2tg1"]
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_options"]
 bg_color = Color(0.07, 0.09, 0.12, 0.72)
-corner_radius_top_left = 22
-corner_radius_top_right = 22
-corner_radius_bottom_right = 22
-corner_radius_bottom_left = 22
 border_width_left = 1
 border_width_top = 1
 border_width_right = 1
 border_width_bottom = 1
 border_color = Color(1, 1, 1, 0.14)
+corner_radius_top_left = 22
+corner_radius_top_right = 22
+corner_radius_bottom_right = 22
+corner_radius_bottom_left = 22
 shadow_color = Color(0, 0, 0, 0.35)
 shadow_size = 12
 shadow_offset = Vector2(0, 3)
 
-[node name="MainMenu" type="Control"]
+[node name="MainMenu" type="Control" unique_id=1580335829]
+layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -62,16 +68,16 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_j4vu4")
 
-[node name="Panel" type="Panel" parent="."]
-anchors_preset = 15
+[node name="Panel" type="Panel" parent="." unique_id=782490106]
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxTexture_nejgq")
 
-[node name="Title" type="Label" parent="."]
-anchors_preset = 5
+[node name="Title" type="Label" parent="." unique_id=38350629]
+layout_mode = 0
 anchor_left = 0.5
 anchor_right = 0.5
 offset_left = -260.0
@@ -81,11 +87,12 @@ offset_bottom = 190.0
 grow_horizontal = 2
 theme_override_font_sizes/font_size = 110
 text = "Keyless"
+label_settings = SubResource("LabelSettings_3fb3l")
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="MainButtons" type="VBoxContainer" parent="."]
-anchors_preset = 8
+[node name="MainButtons" type="VBoxContainer" parent="." unique_id=442969319]
+layout_mode = 0
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -98,7 +105,8 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 14
 
-[node name="StartGame" type="Button" parent="MainButtons"]
+[node name="StartGame" type="Button" parent="MainButtons" unique_id=1424364674]
+layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
@@ -111,7 +119,8 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_hover")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_t2tg1")
 text = "Start Game"
 
-[node name="Settings" type="Button" parent="MainButtons"]
+[node name="Settings" type="Button" parent="MainButtons" unique_id=1026853074]
+layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
@@ -124,7 +133,8 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_hover")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_t2tg1")
 text = "Settings"
 
-[node name="Exit" type="Button" parent="MainButtons"]
+[node name="Exit" type="Button" parent="MainButtons" unique_id=1117782339]
+layout_mode = 2
 size_flags_vertical = 3
 theme_override_colors/font_color = Color(0, 0, 0, 1)
 theme_override_colors/font_focus_color = Color(0, 0, 0, 1)
@@ -137,9 +147,9 @@ theme_override_styles/hover = SubResource("StyleBoxFlat_hover")
 theme_override_styles/focus = SubResource("StyleBoxEmpty_t2tg1")
 text = "Exit"
 
-[node name="Options" type="Panel" parent="."]
+[node name="Options" type="Panel" parent="." unique_id=510888850]
 visible = false
-anchors_preset = 8
+layout_mode = 0
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
@@ -152,8 +162,8 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_styles/panel = SubResource("StyleBoxFlat_options")
 
-[node name="OptionsTitle" type="Label" parent="Options"]
-anchors_preset = 10
+[node name="OptionsTitle" type="Label" parent="Options" unique_id=1293307760]
+layout_mode = 0
 anchor_right = 1.0
 offset_top = 24.0
 offset_bottom = 80.0
@@ -163,8 +173,8 @@ text = "Settings"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="SettingsVBox" type="VBoxContainer" parent="Options"]
-anchors_preset = 15
+[node name="SettingsVBox" type="VBoxContainer" parent="Options" unique_id=641351156]
+layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
 offset_left = 56.0
@@ -175,30 +185,34 @@ grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/separation = 16
 
-[node name="MusicLabel" type="Label" parent="Options/SettingsVBox"]
-theme_override_font_sizes/font_size = 24
+[node name="MusicLabel" type="Label" parent="Options/SettingsVBox" unique_id=1382714199]
+layout_mode = 2
 theme_override_colors/font_color = Color(0.92, 0.95, 1, 1)
+theme_override_font_sizes/font_size = 24
 text = "Music Volume"
 
-[node name="MusicSlider" type="HSlider" parent="Options/SettingsVBox"]
+[node name="MusicSlider" type="HSlider" parent="Options/SettingsVBox" unique_id=1696656438]
 custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
 max_value = 1.0
 step = 0.01
 value = 0.8
 
-[node name="SfxLabel" type="Label" parent="Options/SettingsVBox"]
-theme_override_font_sizes/font_size = 24
+[node name="SfxLabel" type="Label" parent="Options/SettingsVBox" unique_id=1001742312]
+layout_mode = 2
 theme_override_colors/font_color = Color(0.92, 0.95, 1, 1)
+theme_override_font_sizes/font_size = 24
 text = "SFX Volume"
 
-[node name="SfxSlider" type="HSlider" parent="Options/SettingsVBox"]
+[node name="SfxSlider" type="HSlider" parent="Options/SettingsVBox" unique_id=709860524]
 custom_minimum_size = Vector2(0, 30)
+layout_mode = 2
 max_value = 1.0
 step = 0.01
 value = 0.8
 
-[node name="Back" type="Button" parent="Options"]
-anchors_preset = 7
+[node name="Back" type="Button" parent="Options" unique_id=902703891]
+layout_mode = 0
 anchor_left = 0.5
 anchor_top = 1.0
 anchor_right = 0.5
@@ -223,6 +237,6 @@ text = "Back"
 [connection signal="pressed" from="MainButtons/StartGame" to="." method="_on_start_pressed"]
 [connection signal="pressed" from="MainButtons/Settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="MainButtons/Exit" to="." method="_on_exit_pressed"]
-[connection signal="pressed" from="Options/Back" to="." method="_on_back_options_pressed"]
 [connection signal="value_changed" from="Options/SettingsVBox/MusicSlider" to="." method="_on_music_slider_value_changed"]
 [connection signal="value_changed" from="Options/SettingsVBox/SfxSlider" to="." method="_on_sfx_slider_value_changed"]
+[connection signal="pressed" from="Options/Back" to="." method="_on_back_options_pressed"]
