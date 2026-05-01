@@ -1,8 +1,8 @@
 extends CharacterBody2D
 
 
-const SPEED = 300.0
-const JUMP_VELOCITY = -400.0
+const SPEED = 250.0
+const JUMP_VELOCITY = -350.0
 
 @onready var animated_sprite = $AnimatedSprite2D
 
@@ -37,3 +37,10 @@ func _physics_process(delta: float) -> void:
 		velocity.x = move_toward(velocity.x, 0, SPEED)
 
 	move_and_slide()
+
+func _die() -> void:
+	get_tree().reload_current_scene()
+
+
+func _on_area_2d_body_entered(_body: CharacterBody2D) -> void:
+	_die()

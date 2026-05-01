@@ -27,17 +27,11 @@ func _setup_button_fx(btn: BaseButton) -> void:
 func _ready() -> void:
 	await get_tree().process_frame
 	_setup_button_fx($VBoxContainer/Start)
-	_setup_button_fx($VBoxContainer/World)
 	_setup_button_fx($VBoxContainer/Exit)
 
 
 func _on_start_pressed() -> void:
-	print("Start pressed")
-
-
-func _on_world_pressed() -> void:
-	get_tree().change_scene_to_file("res://scenes/World.tscn")
-
+	get_tree().change_scene_to_file("res://scenes/prison_lvl_1.tscn")
 
 func _on_exit_pressed() -> void:
 	get_tree().quit()

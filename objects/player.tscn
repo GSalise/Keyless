@@ -4,6 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://d0baevfurjxtk" path="res://assets/entities/asset 1/prisoner1/playeridle.png" id="1_uxov2"]
 [ext_resource type="Texture2D" uid="uid://cajn70bbpey7c" path="res://assets/entities/asset 1/prisoner1/playerrun1.png" id="2_nmc1l"]
 [ext_resource type="Texture2D" uid="uid://cu1qp28yetco0" path="res://assets/entities/asset 1/prisoner1/playerrun2.png" id="3_f46kd"]
+[ext_resource type="PackedScene" uid="uid://bf46cujqxqcwb" path="res://objects/ui/pause-menu/pause_menu.tscn" id="5_f46kd"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3rerk"]
 animations = [{
@@ -32,7 +33,7 @@ radius = 207.0
 height = 722.0
 
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=375027641]
-scale = Vector2(0.09, 0.09)
+scale = Vector2(0.05, 0.05)
 script = ExtResource("1_nmc1l")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1618384187]
@@ -44,3 +45,18 @@ autoplay = "idle"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1063390742]
 position = Vector2(16, -363)
 shape = SubResource("CapsuleShape2D_i825w")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=729923520]
+
+[node name="PauseMenu" parent="CanvasLayer" unique_id=1291310673 instance=ExtResource("5_f46kd")]
+
+[node name="Camera2D" type="Camera2D" parent="." unique_id=1292113715]
+position = Vector2(0, -2088.8887)
+scale = Vector2(518.76746, 5942.194)
+zoom = Vector2(2, 2)
+limit_enabled = false
+limit_left = -9999858
+limit_top = -9999749
+limit_right = 10000142
+limit_bottom = 181
+position_smoothing_enabled = true

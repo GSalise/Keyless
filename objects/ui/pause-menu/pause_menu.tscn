@@ -1,10 +1,10 @@
 [gd_scene format=3 uid="uid://bf46cujqxqcwb"]
 
-[ext_resource type="Script" uid="uid://g7df3ou767vf" path="res://objects/pause_menu.gd" id="1_8x80a"]
-[ext_resource type="Shader" uid="uid://b3qfkgb5eqwf7" path="res://objects/pause_menu.gdshader" id="1_aktha"]
+[ext_resource type="Script" uid="uid://c36wxvvjvyufx" path="res://scripts/pause_menu.gd" id="1_wfh58"]
+[ext_resource type="Shader" uid="uid://b4wpc1ulpi06f" path="res://assets/shaders/pause_menu.gdshader" id="2_ok534"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_8x80a"]
-shader = ExtResource("1_aktha")
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_wfh58"]
+shader = ExtResource("2_ok534")
 shader_parameter/lod = 0.0
 
 [sub_resource type="Animation" id="Animation_aktha"]
@@ -76,10 +76,10 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-script = ExtResource("1_8x80a")
+script = ExtResource("1_wfh58")
 
 [node name="ColorRect" type="ColorRect" parent="." unique_id=2011842253]
-material = SubResource("ShaderMaterial_8x80a")
+material = SubResource("ShaderMaterial_wfh58")
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0
