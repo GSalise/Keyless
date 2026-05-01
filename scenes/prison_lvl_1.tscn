@@ -1,11 +1,14 @@
 [gd_scene format=4 uid="uid://cqykd2e0ns3ra"]
 
+[ext_resource type="Script" uid="uid://wdr26di634sp" path="res://scripts/prison_lvl_1.gd" id="1_ib7rw"]
 [ext_resource type="Texture2D" uid="uid://br74wot6a1nqj" path="res://assets/tiles/DungeonAssets/Decorations.png" id="1_knvex"]
 [ext_resource type="Texture2D" uid="uid://qfbv7ih0bu72" path="res://assets/tiles/DungeonAssets/dungeonSpritePack.png" id="2_f7i2g"]
 [ext_resource type="Texture2D" uid="uid://dqq3djnpyinb" path="res://assets/tiles/DungeonAssets/Traps.png" id="3_74jca"]
 [ext_resource type="Texture2D" uid="uid://bdsgp780o6bcw" path="res://assets/tiles/Dungeon Tile Set.png" id="4_74jca"]
 [ext_resource type="PackedScene" uid="uid://cfurdengunsyc" path="res://objects/player.tscn" id="4_f7i2g"]
 [ext_resource type="Script" uid="uid://g2f8o1clogx8" path="res://scripts/prison-lvl1-platform.gd" id="6_x3yms"]
+[ext_resource type="PackedScene" uid="uid://bk82aps0ol6b1" path="res://objects/heartsContainer.tscn" id="7_08ybi"]
+[ext_resource type="PackedScene" path="res://objects/ui/death-menu/death_menu.tscn" id="8_4m4rr"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_x3yms"]
 texture = ExtResource("1_knvex")
@@ -196,11 +199,12 @@ size = Vector2(63.124634, 20)
 
 [sub_resource type="Curve2D" id="Curve2D_74jca"]
 _data = {
-"points": PackedVector2Array(0, 0, 0, 0, -1, 50, 0, 0, 0, 0, -5, -673, 0, 0, 0, 0, -3, 45)
+"points": PackedVector2Array(0, 0, 0, 0, -1, 50, 0, 0, 0, 0, -5, -673, 0, 0, 0, 0, -3.2160034, -154.1466, 0, 0, 0, 0, -3, 45)
 }
-point_count = 3
+point_count = 4
 
 [node name="PrisonLvl1" type="Node2D" unique_id=60835451]
+script = ExtResource("1_ib7rw")
 
 [node name="BackgroundTiles" type="Node2D" parent="." unique_id=1552149032]
 position = Vector2(127, 464)
@@ -265,5 +269,13 @@ script = ExtResource("6_x3yms")
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="MovingPlatform1/Path2D/PathFollow2D" unique_id=499330540]
 rotation = 1.5707964
 remote_path = NodePath("../../../StaticBody2D")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=843726346]
+
+[node name="hearts_container" parent="CanvasLayer" unique_id=946694079 instance=ExtResource("7_08ybi")]
+offset_right = 0.0
+offset_bottom = 0.0
+
+[node name="DeathMenu" parent="CanvasLayer" instance=ExtResource("8_4m4rr")]
 
 [connection signal="body_entered" from="WorldBorder" to="CharacterBody2D" method="_on_area_2d_body_entered"]
