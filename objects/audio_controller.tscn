@@ -3,6 +3,7 @@
 [ext_resource type="Script" uid="uid://cvrscoe3tvkc" path="res://objects/audio_controller.gd" id="1_0rbf2"]
 [ext_resource type="AudioStream" uid="uid://2ktydfx1p016" path="res://assets/audio/player movement/FootStep/run.mp3" id="2_0rbf2"]
 [ext_resource type="AudioStream" uid="uid://bufik4anbuvq0" path="res://assets/audio/player movement/Bounce Jump/jump.mp3" id="3_0rbf2"]
+[ext_resource type="AudioStream" uid="uid://wkb4eq4jk062" path="res://assets/audio/music effect/mixkit-losing-drums-2023.wav" id="4_hv1yd"]
 
 [node name="AudioController" type="Node2D" unique_id=444956114]
 script = ExtResource("1_0rbf2")
@@ -13,3 +14,7 @@ volume_db = 1.0
 
 [node name="Jump" type="AudioStreamPlayer2D" parent="." unique_id=382891032]
 stream = ExtResource("3_0rbf2")
+
+[node name="death" type="AudioStreamPlayer2D" parent="." unique_id=1707521457]
+process_mode = 3
+stream = ExtResource("4_hv1yd")

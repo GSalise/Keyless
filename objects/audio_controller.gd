@@ -7,11 +7,14 @@ extends Node2D
 
 @onready var run_player: AudioStreamPlayer2D = $Run
 @onready var jump_player: AudioStreamPlayer2D = $Jump
+@onready var death_player: AudioStreamPlayer2D = $death
 
 var _is_running: bool = false
 
 func _ready() -> void:
 	run_player.finished.connect(_on_run_finished)
+	# Death SFX must play while the game is paused (death menu), so it cannot be PAUSABLE.
+	death_player.process_mode = Node.PROCESS_MODE_ALWAYS
 
 	var player: Node = null
 	if player_path != NodePath():
@@ -33,6 +36,8 @@ func _connect_player(player: Node) -> void:
 		player.connect("stopped_running", _on_player_stopped_running)
 	if player.has_signal("jumped"):
 		player.connect("jumped", _on_player_jumped)
+	if player.has_signal("died"):
+		player.connect("died", _on_player_died)
 
 func _on_player_started_running() -> void:
 	_is_running = true
@@ -49,6 +54,16 @@ func _on_player_jumped() -> void:
 	if jump_player.playing:
 		jump_player.stop()
 	jump_player.play()
+
+func _on_player_died(_reason: StringName) -> void:
+	_is_running = false
+	if run_player.playing:
+		run_player.stop()
+	if mute:
+		return
+	if death_player.playing:
+		death_player.stop()
+	death_player.play()
 
 func _on_run_finished() -> void:
 	# Footstep WAVs usually don't loop; replay while still running.
