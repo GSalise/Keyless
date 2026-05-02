@@ -8,7 +8,7 @@ class_name GuardChase
 var _lose_sight_timer := 0.0
 
 func Enter() -> void:
-	print("chase mode")
+	# print("chase mode")
 	_lose_sight_timer = 0.0
 
 

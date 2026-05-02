@@ -26,12 +26,6 @@ func Physics_Update(_delta: float) -> void:
 		return
 
 	_at_cliff = false
-	enemy.velocity.x = move_speed * direction
-
-	if enemy.global_position.x > start_x + patrol_distance:
-		direction = -1.0
-	elif enemy.global_position.x < start_x - patrol_distance:
-		direction = 1.0
 
 	if enemy.wall_check.is_colliding():
 		if not _is_wall:
@@ -39,6 +33,17 @@ func Physics_Update(_delta: float) -> void:
 			direction *= -1
 		enemy.velocity.x = move_speed * direction
 		return
+
+	_is_wall = false
+	
+	enemy.velocity.x = move_speed * direction
+
+	if enemy.global_position.x > start_x + patrol_distance:
+		direction = -1.0
+	elif enemy.global_position.x < start_x - patrol_distance:
+		direction = 1.0
+
+
 
 
 	if enemy.sight_ray.is_colliding():

@@ -36,6 +36,9 @@ animations = [{
 radius = 207.0
 height = 722.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fmmlp"]
+size = Vector2(374.25, 300)
+
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=474725346]
 script = ExtResource("1_3cjrp")
 
@@ -48,18 +51,18 @@ animation = &"move"
 position = Vector2(16, -363)
 shape = SubResource("CapsuleShape2D_ylqd4")
 
-[node name="PunchSprite" type="Sprite2D" parent="." unique_id=847908387]
-visible = false
-position = Vector2(384, -225)
-texture = ExtResource("8_fmmlp")
-
 [node name="SightRay" type="RayCast2D" parent="." unique_id=1744499185]
 position = Vector2(0, -288)
 target_position = Vector2(3038, 0)
 
 [node name="WallCheck" type="RayCast2D" parent="." unique_id=2082900286]
 position = Vector2(0, -288)
-target_position = Vector2(548, 0)
+target_position = Vector2(436, 0)
+collision_mask = 3
+
+[node name="FloorCheck" type="RayCast2D" parent="." unique_id=481336685]
+position = Vector2(0, -288)
+target_position = Vector2(446, 307)
 
 [node name="StateMachine" type="Node" parent="." unique_id=2080558199 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("5_oojvo")
@@ -80,6 +83,14 @@ script = ExtResource("9_fmmlp")
 enemy = NodePath("../..")
 metadata/_custom_type_script = "uid://cfqrqq4buawwq"
 
-[node name="FloorCheck" type="RayCast2D" parent="." unique_id=481336685]
-position = Vector2(0, -288)
-target_position = Vector2(416, 294)
+[node name="PunchCollision" type="Area2D" parent="." unique_id=1445652618]
+position = Vector2(371, -209)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PunchCollision" unique_id=1812855976]
+position = Vector2(15, 2)
+shape = SubResource("RectangleShape2D_fmmlp")
+
+[node name="PunchSprite" type="Sprite2D" parent="PunchCollision" unique_id=847908387]
+visible = false
+position = Vector2(20, 7)
+texture = ExtResource("8_fmmlp")
