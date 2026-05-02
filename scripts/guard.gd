@@ -7,6 +7,7 @@ class_name Guard
 @onready var wall_check: RayCast2D = $WallCheck
 @onready var punch: Area2D = $PunchCollision
 @onready var punch_sprite: Sprite2D = $PunchCollision/PunchSprite
+@onready var sight_visual: Line2D = $SightRay/SightVisual
 
 
 # Guard.gd
@@ -35,3 +36,18 @@ func _physics_process(delta: float) -> void:
 
 	wall_check.target_position.x = abs(wall_check.target_position.x) * facing
 	wall_check.position.x = abs(wall_check.position.x) * facing
+	
+	_update_sight_visual()
+
+func _update_sight_visual() -> void:
+	sight_visual.clear_points()
+	sight_visual.add_point(Vector2.ZERO)  # origin (local to SightRay)
+	
+	if sight_ray.is_colliding():
+		# Convert global hit point → local space of sight_ray
+		var local_hit = sight_ray.to_local(sight_ray.get_collision_point())
+		sight_visual.add_point(local_hit)
+		sight_visual.default_color = Color.RED
+	else:
+		sight_visual.add_point(sight_ray.target_position)
+		sight_visual.default_color = Color.GREEN
