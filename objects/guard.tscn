@@ -1,7 +1,57 @@
 [gd_scene format=3 uid="uid://cevafa4g1egly"]
 
-[node name="CharacterBody2D" type="CharacterBody2D" unique_id=474725346]
+[ext_resource type="Script" uid="uid://clj5siiyfs831" path="res://scripts/guard.gd" id="1_3cjrp"]
+[ext_resource type="Texture2D" uid="uid://be4coaqgfnb6j" path="res://assets/entities/asset 1/cop1/cop2idle.png" id="1_ylqd4"]
+[ext_resource type="Texture2D" uid="uid://cidth4d8142hh" path="res://assets/entities/asset 1/cop1/cop2run1.png" id="2_rylmi"]
+[ext_resource type="Texture2D" uid="uid://dv6ek84r32yi" path="res://assets/entities/asset 1/cop1/cop2run2.png" id="3_1h8ou"]
+[ext_resource type="Script" uid="uid://ctqsdugl8nti1" path="res://scripts/state_machine.gd" id="5_oojvo"]
+[ext_resource type="Script" uid="uid://3ekk277dscf1" path="res://scripts/guard_idle.gd" id="6_eysg4"]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=815031163]
+[sub_resource type="SpriteFrames" id="SpriteFrames_3cjrp"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_ylqd4")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("2_rylmi")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_1h8ou")
+}],
+"loop": true,
+"name": &"move",
+"speed": 6.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_ylqd4"]
+radius = 207.0
+height = 722.0
+
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=474725346]
+script = ExtResource("1_3cjrp")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1800571662]
+position = Vector2(-12, -405)
+sprite_frames = SubResource("SpriteFrames_3cjrp")
+animation = &"move"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=815031163]
+position = Vector2(16, -363)
+shape = SubResource("CapsuleShape2D_ylqd4")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=530445019]
+
+[node name="StateMachine" type="Node" parent="." unique_id=2080558199 node_paths=PackedStringArray("initial_state")]
+script = ExtResource("5_oojvo")
+initial_state = NodePath("GuardIdle")
+
+[node name="GuardIdle" type="Node" parent="StateMachine" unique_id=973260736 node_paths=PackedStringArray("enemy")]
+script = ExtResource("6_eysg4")
+enemy = NodePath("../..")
+metadata/_custom_type_script = "uid://3ekk277dscf1"
