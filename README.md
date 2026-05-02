@@ -4,6 +4,9 @@
 **Company Name:** CHIP GAMES STUDIOS  
 **Team Name:** CHIP
 
+## VIDEO SUBMISSIONS
+Level 1 - https://youtu.be/zQ88LwRNUk8
+
 ## Team Members and Roles
 
 | Member                             | Roles                                       |
