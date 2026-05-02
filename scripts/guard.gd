@@ -1,21 +1,29 @@
 extends CharacterBody2D
 class_name Guard
 
-@onready var animated_sprite = $GuardAnimatedSprite
+@onready var animated_sprite: AnimatedSprite2D = $GuardAnimatedSprite
+@onready var nav_agent: NavigationAgent2D = $NavigationAgent2D
+@onready var sight_ray: RayCast2D = $SightRay
+@onready var floor_check: RayCast2D = $FloorCheck
+@onready var wall_check: RayCast2D = $WallCheck
+@onready var punch: Sprite2D = $PunchSprite
 
+# Guard.gd
+var facing := 1.0  # 1 = right, -1 = left
 
 func _physics_process(delta: float) -> void:
-	if not is_on_floor():
-		velocity += get_gravity() * delta
-	
-	move_and_slide()
+    if not is_on_floor():
+        velocity += get_gravity() * delta
 
-	if velocity.length() > 0:
-		animated_sprite.play("move")
-	else:
-		animated_sprite.play("idle")
+    move_and_slide()
 
-	if velocity.x > 0:
-		animated_sprite.flip_h = false
-	else:
-		animated_sprite.flip_h = true
+    if velocity.x != 0:
+        facing = sign(velocity.x)  # only update when actually moving
+
+    animated_sprite.play("move" if velocity.length() > 0 else "idle")
+    # print("floor_check pos: ", floor_check.global_position, " target: ", floor_check.target_position, " colliding: ", floor_check.is_colliding())
+    animated_sprite.flip_h = facing < 0
+    punch.flip_h = facing < 0
+    punch.position.x = abs(punch.position.x) * facing
+    floor_check.position.x = abs(floor_check.position.x) * facing
+    sight_ray.target_position.x = abs(sight_ray.target_position.x) * facing
