@@ -1,0 +1,70 @@
+[gd_scene format=3 uid="uid://3k5qgj72gf05"]
+
+[ext_resource type="Script" uid="uid://r1galokospsy" path="res://scripts/loading_screen.gd" id="1_p8im4"]
+[ext_resource type="FontFile" uid="uid://baqhs3crp16yo" path="res://assets/font/Gwenchana.ttf" id="2_nci54"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_xv75e"]
+font = ExtResource("2_nci54")
+font_size = 60
+
+[node name="LoadingScreen" type="CanvasLayer" unique_id=1754100275]
+process_mode = 3
+layer = 100
+script = ExtResource("1_p8im4")
+
+[node name="Bg" type="ColorRect" parent="." unique_id=1520520435]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+color = Color(0.06, 0.06, 0.075, 1)
+
+[node name="Center" type="CenterContainer" parent="." unique_id=1845334249]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Card" type="Panel" parent="Center" unique_id=1697542476]
+custom_minimum_size = Vector2(720, 280)
+layout_mode = 2
+
+[node name="VBox" type="VBoxContainer" parent="Center/Card" unique_id=1927130836]
+layout_mode = 0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 36.0
+offset_top = 28.0
+offset_right = -36.0
+offset_bottom = -28.0
+grow_horizontal = 2
+grow_vertical = 2
+theme_override_constants/separation = 12
+
+[node name="Title" type="Label" parent="Center/Card/VBox" unique_id=1831715311]
+layout_mode = 2
+theme_override_font_sizes/font_size = 54
+text = "KEYLESS"
+label_settings = SubResource("LabelSettings_xv75e")
+horizontal_alignment = 1
+uppercase = true
+
+[node name="Subtitle" type="Label" parent="Center/Card/VBox" unique_id=201920061]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.82, 0.82, 0.86, 1)
+theme_override_font_sizes/font_size = 18
+text = "Preparing the world..."
+horizontal_alignment = 1
+
+[node name="ProgressBar" type="ProgressBar" parent="Center/Card/VBox" unique_id=1109089172]
+custom_minimum_size = Vector2(0, 24)
+layout_mode = 2
+
+[node name="Hint" type="Label" parent="Center/Card/VBox" unique_id=1444172181]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.62, 0.62, 0.68, 1)
+theme_override_font_sizes/font_size = 14
+text = "Tip: Use A / D to move, SPACE to jump."
+horizontal_alignment = 1
