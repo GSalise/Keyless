@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://b3vjhtbugq11c"]
 
-[ext_resource type="Script" uid="uid://cvrscoe3tvkc" path="res://objects/audio_controller.gd" id="1_0rbf2"]
+[ext_resource type="Script" uid="uid://cvrscoe3tvkc" path="res://scripts/audio_controller.gd" id="1_0rbf2"]
 [ext_resource type="AudioStream" uid="uid://2ktydfx1p016" path="res://assets/audio/player movement/FootStep/run.mp3" id="2_0rbf2"]
 [ext_resource type="AudioStream" uid="uid://bufik4anbuvq0" path="res://assets/audio/player movement/Bounce Jump/jump.mp3" id="3_0rbf2"]
 [ext_resource type="AudioStream" uid="uid://wkb4eq4jk062" path="res://assets/audio/music effect/mixkit-losing-drums-2023.wav" id="4_hv1yd"]

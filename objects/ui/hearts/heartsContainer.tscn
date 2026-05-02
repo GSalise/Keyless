@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://bk82aps0ol6b1"]
 
-[ext_resource type="Script" uid="uid://tssaa74s7a71" path="res://scripts/hearts_container.gd" id="1_hw4px"]
+[ext_resource type="Script" path="res://scripts/hearts_container.gd" id="1_hw4px"]
 
 [node name="hearts_container" type="HBoxContainer" unique_id=946694079]
 script = ExtResource("1_hw4px")

@@ -6,6 +6,8 @@
 [ext_resource type="Texture2D" uid="uid://dv6ek84r32yi" path="res://assets/entities/asset 1/cop1/cop2run2.png" id="3_1h8ou"]
 [ext_resource type="Script" uid="uid://ctqsdugl8nti1" path="res://scripts/state_machine.gd" id="5_oojvo"]
 [ext_resource type="Script" uid="uid://3ekk277dscf1" path="res://scripts/guard_idle.gd" id="6_eysg4"]
+[ext_resource type="Script" uid="uid://7ypc7io3yrj2" path="res://scripts/guard_attack.gd" id="7_eysg4"]
+[ext_resource type="Texture2D" uid="uid://eojlfyfwg0c8" path="res://assets/sprites/punch-bgless.png" id="8_fmmlp"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3cjrp"]
 animations = [{
@@ -36,7 +38,7 @@ height = 722.0
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=474725346]
 script = ExtResource("1_3cjrp")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1800571662]
+[node name="GuardAnimatedSprite" type="AnimatedSprite2D" parent="." unique_id=1800571662]
 position = Vector2(-12, -405)
 sprite_frames = SubResource("SpriteFrames_3cjrp")
 animation = &"move"
@@ -44,8 +46,6 @@ animation = &"move"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=815031163]
 position = Vector2(16, -363)
 shape = SubResource("CapsuleShape2D_ylqd4")
-
-[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=530445019]
 
 [node name="StateMachine" type="Node" parent="." unique_id=2080558199 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("5_oojvo")
@@ -55,3 +55,13 @@ initial_state = NodePath("GuardIdle")
 script = ExtResource("6_eysg4")
 enemy = NodePath("../..")
 metadata/_custom_type_script = "uid://3ekk277dscf1"
+
+[node name="GuardAttack" type="Node" parent="StateMachine" unique_id=1627760187 node_paths=PackedStringArray("enemy")]
+script = ExtResource("7_eysg4")
+enemy = NodePath("../..")
+metadata/_custom_type_script = "uid://7ypc7io3yrj2"
+
+[node name="PunchSprite" type="Sprite2D" parent="." unique_id=1916308253]
+visible = false
+position = Vector2(455, -221)
+texture = ExtResource("8_fmmlp")

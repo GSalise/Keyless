@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://3k5qgj72gf05"]
 
-[ext_resource type="Script" uid="uid://cwn7l6yfvj53h" path="res://objects/loading_screen.gd" id="1_32s80"]
+[ext_resource type="Script" uid="uid://r1galokospsy" path="res://scripts/loading_screen.gd" id="1_p8im4"]
 [ext_resource type="FontFile" uid="uid://baqhs3crp16yo" path="res://assets/font/Gwenchana.ttf" id="2_nci54"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_xv75e"]
@@ -10,7 +10,7 @@ font_size = 60
 [node name="LoadingScreen" type="CanvasLayer" unique_id=1754100275]
 process_mode = 3
 layer = 100
-script = ExtResource("1_32s80")
+script = ExtResource("1_p8im4")
 
 [node name="Bg" type="ColorRect" parent="." unique_id=1520520435]
 anchors_preset = 15

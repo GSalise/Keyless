@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cfcu1b5st8cha"]
 
-[ext_resource type="Script" uid="uid://cgehy47j1ufx6" path="res://scripts/heart_gui.gd" id="1_e5y2t"]
+[ext_resource type="Script" path="res://scripts/heart_gui.gd" id="1_e5y2t"]
 [ext_resource type="Texture2D" uid="uid://dy3bpp0fxqj7r" path="res://assets/health_bar/16x16 Heart Health Red.png" id="1_gyt31"]
 
 [node name="heartGui" type="Panel" unique_id=19792691]
