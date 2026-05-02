@@ -4,6 +4,7 @@
 [ext_resource type="AudioStream" uid="uid://2ktydfx1p016" path="res://assets/audio/player movement/FootStep/run.mp3" id="2_0rbf2"]
 [ext_resource type="AudioStream" uid="uid://bufik4anbuvq0" path="res://assets/audio/player movement/Bounce Jump/jump.mp3" id="3_0rbf2"]
 [ext_resource type="AudioStream" uid="uid://wkb4eq4jk062" path="res://assets/audio/music effect/mixkit-losing-drums-2023.wav" id="4_hv1yd"]
+[ext_resource type="AudioStream" uid="uid://hxjoumt352q7" path="res://assets/audio/music effect/mixkit-small-win-2020.wav" id="5_46cmc"]
 
 [node name="AudioController" type="Node2D" unique_id=444956114]
 script = ExtResource("1_0rbf2")
@@ -18,3 +19,6 @@ stream = ExtResource("3_0rbf2")
 [node name="death" type="AudioStreamPlayer2D" parent="." unique_id=1707521457]
 process_mode = 3
 stream = ExtResource("4_hv1yd")
+
+[node name="victory" type="AudioStreamPlayer2D" parent="." unique_id=171106176]
+stream = ExtResource("5_46cmc")

@@ -8,6 +8,7 @@ extends Node2D
 @onready var run_player: AudioStreamPlayer2D = $Run
 @onready var jump_player: AudioStreamPlayer2D = $Jump
 @onready var death_player: AudioStreamPlayer2D = $death
+@onready var victory_player: AudioStreamPlayer2D = $victory
 
 var _is_running: bool = false
 
@@ -15,6 +16,7 @@ func _ready() -> void:
 	run_player.finished.connect(_on_run_finished)
 	# Death SFX must play while the game is paused (death menu), so it cannot be PAUSABLE.
 	death_player.process_mode = Node.PROCESS_MODE_ALWAYS
+	victory_player.process_mode = Node.PROCESS_MODE_ALWAYS
 
 	var player: Node = null
 	if player_path != NodePath():
@@ -78,3 +80,16 @@ func _try_play_run() -> void:
 	if run_player.playing:
 		return
 	run_player.play()
+
+func stop_movement_sfx() -> void:
+	_is_running = false
+	if run_player.playing:
+		run_player.stop()
+
+func play_victory() -> void:
+	stop_movement_sfx()
+	if mute:
+		return
+	if victory_player.playing:
+		victory_player.stop()
+	victory_player.play()

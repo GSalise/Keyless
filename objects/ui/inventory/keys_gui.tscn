@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://bebms1nd2t21b"]
+
+[ext_resource type="Texture2D" uid="uid://0w8yn2cihk7c" path="res://assets/sprites/prison/key.png" id="1_jt41q"]
+
+[node name="keysGUI" type="Panel" unique_id=1617813543]
+self_modulate = Color(1, 1, 1, 0)
+custom_minimum_size = Vector2(75, 47)
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -75.0
+offset_bottom = 47.0
+grow_horizontal = 0
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=951291159]
+position = Vector2(27.812511, 23.6875)
+scale = Vector2(0.18585187, 0.19642858)
+texture = ExtResource("1_jt41q")

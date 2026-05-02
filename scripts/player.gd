@@ -12,6 +12,7 @@ signal stopped_running
 signal jumped
 signal health_changed(current_health: int, max_health: int)
 signal died(reason: StringName)
+signal stealth_changed(active: bool)
 
 @export var maxHealth: int = 3
 @export var fall_damage_distance: float = 350.0
@@ -39,6 +40,8 @@ func _physics_process(delta: float) -> void:
 		_is_stealthed = true
 		_stealth_timer = STEALTH_DURATION
 		set_collision_layer_value(1, false)  # hide from raycasts
+		animated_sprite.modulate = Color(0.72, 0.72, 0.72, 1.0)
+		stealth_changed.emit(true)
 
 	# Stealth countdown
 	if _is_stealthed:
@@ -101,6 +104,8 @@ func _end_stealth() -> void:
 	_stealth_timer = 0.0
 	set_collision_layer_value(1, true)  # restore visibility to raycasts
 	print("Stealth ended")
+	animated_sprite.modulate = Color(1, 1, 1, 1)
+	stealth_changed.emit(false)
 
 # ... rest of your functions unchanged
 func _request_death(reason: StringName) -> void:
