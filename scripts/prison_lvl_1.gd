@@ -96,8 +96,14 @@ func _setup_victory_overlay() -> void:
 	label.text = "Victory"
 	label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER
 	label.vertical_alignment = VERTICAL_ALIGNMENT_CENTER
-	label.set_anchors_preset(Control.PRESET_CENTER)
-	label.position = Vector2.ZERO
+	label.set_anchor(SIDE_LEFT, 0)
+	label.set_anchor(SIDE_TOP, 0)
+	label.set_anchor(SIDE_RIGHT, 1)
+	label.set_anchor(SIDE_BOTTOM, 1)
+	label.offset_left = 0
+	label.offset_top = 0
+	label.offset_right = 0
+	label.offset_bottom = 0
 	label.add_theme_font_override("font", _victory_font)
 	label.add_theme_font_size_override("font_size", 96)
 	label.add_theme_color_override("font_color", Color(1, 0.96, 0.82, 1))

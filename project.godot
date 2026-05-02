@@ -23,6 +23,7 @@ BgMusic="*res://objects/bgMusic.tscn"
 
 world-boundary="This is used for world boundary death zones"
 player=""
+enemy=""
 
 [input]
 
