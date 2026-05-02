@@ -6,6 +6,9 @@
 [ext_resource type="Texture2D" uid="uid://bdsgp780o6bcw" path="res://assets/tiles/Dungeon Tile Set.png" id="4_74jca"]
 [ext_resource type="PackedScene" uid="uid://cfurdengunsyc" path="res://objects/player.tscn" id="4_f7i2g"]
 [ext_resource type="Script" uid="uid://g2f8o1clogx8" path="res://scripts/prison-lvl1-platform.gd" id="6_x3yms"]
+[ext_resource type="Texture2D" uid="uid://0w8yn2cihk7c" path="res://assets/sprites/prison/key.png" id="7_08ybi"]
+[ext_resource type="Script" uid="uid://b0crp5bgh4uy3" path="res://scripts/key_path.gd" id="7_ib7rw"]
+[ext_resource type="PackedScene" uid="uid://cevafa4g1egly" path="res://objects/guard.tscn" id="9_n2f6k"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_x3yms"]
 texture = ExtResource("1_knvex")
@@ -49,6 +52,12 @@ texture = ExtResource("2_f7i2g")
 7:3/0 = 0
 9:3/size_in_atlas = Vector2i(2, 2)
 9:3/0 = 0
+4:7/size_in_atlas = Vector2i(4, 4)
+4:7/0 = 0
+0:7/size_in_atlas = Vector2i(4, 4)
+0:7/0 = 0
+8:7/size_in_atlas = Vector2i(3, 4)
+8:7/0 = 0
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ib7rw"]
 texture = ExtResource("3_74jca")
@@ -200,6 +209,15 @@ _data = {
 }
 point_count = 3
 
+[sub_resource type="Curve2D" id="Curve2D_ib7rw"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 51, 19, 0, 0, 0, 0, 51, -32, 0, 0, 0, 0, 51, 19)
+}
+point_count = 3
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n2f6k"]
+size = Vector2(22.819397, 9.449188)
+
 [node name="PrisonLvl1" type="Node2D" unique_id=60835451]
 
 [node name="BackgroundTiles" type="Node2D" parent="." unique_id=1552149032]
@@ -222,7 +240,7 @@ tile_set = SubResource("TileSet_n2f6k")
 tile_set = SubResource("TileSet_tr5xq")
 
 [node name="CharacterBody2D" parent="." unique_id=375027641 instance=ExtResource("4_f7i2g")]
-position = Vector2(1383.9999, 649)
+position = Vector2(-360.99982, 531)
 
 [node name="WorldBorder" type="Area2D" parent="." unique_id=1707261871]
 position = Vector2(477, 719)
@@ -233,6 +251,7 @@ shape = SubResource("WorldBoundaryShape2D_f7i2g")
 
 [node name="MovingPlatform1" type="Node2D" parent="." unique_id=1788898356]
 position = Vector2(1388, 770)
+metadata/_edit_lock_ = true
 
 [node name="StaticBody2D" type="AnimatableBody2D" parent="MovingPlatform1" unique_id=664253618]
 position = Vector2(-1.3566895, -14.470642)
@@ -265,5 +284,37 @@ script = ExtResource("6_x3yms")
 [node name="RemoteTransform2D" type="RemoteTransform2D" parent="MovingPlatform1/Path2D/PathFollow2D" unique_id=499330540]
 rotation = 1.5707964
 remote_path = NodePath("../../../StaticBody2D")
+
+[node name="KEY" type="Node2D" parent="." unique_id=1905336585]
+position = Vector2(1900, 453)
+metadata/_edit_lock_ = true
+
+[node name="Path2D" type="Path2D" parent="KEY" unique_id=171393614]
+curve = SubResource("Curve2D_ib7rw")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="KEY/Path2D" unique_id=1771426330]
+position = Vector2(51, 17.07664)
+rotation = -1.551191
+progress = 100.050606
+rotates = false
+script = ExtResource("7_ib7rw")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="KEY/Path2D/PathFollow2D" unique_id=1446543856]
+rotation = 1.5707964
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="KEY/Path2D/PathFollow2D/StaticBody2D" unique_id=464026668]
+position = Vector2(-0.5098877, -0.4900818)
+shape = SubResource("RectangleShape2D_n2f6k")
+
+[node name="Key" type="Sprite2D" parent="KEY/Path2D/PathFollow2D/StaticBody2D" unique_id=332618789]
+position = Vector2(1.9073486e-06, -1.847744e-06)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("7_08ybi")
+
+[node name="Guards" type="Node2D" parent="." unique_id=2110863053]
+
+[node name="CharacterBody2D2" parent="Guards" unique_id=474725346 instance=ExtResource("9_n2f6k")]
+position = Vector2(-54.999985, 583)
+scale = Vector2(0.05, 0.05)
 
 [connection signal="body_entered" from="WorldBorder" to="CharacterBody2D" method="_on_area_2d_body_entered"]
