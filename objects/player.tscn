@@ -30,21 +30,22 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_i825w"]
-radius = 207.0
-height = 722.0
+radius = 380.0
+height = 1280.0
 
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=375027641]
 scale = Vector2(0.05, 0.05)
 script = ExtResource("1_nmc1l")
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=1618384187]
-position = Vector2(5, -405)
+position = Vector2(160.49997, -614.24994)
+scale = Vector2(1.589015, 1.5024008)
 sprite_frames = SubResource("SpriteFrames_3rerk")
 animation = &"idle"
 autoplay = "idle"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1063390742]
-position = Vector2(16, -363)
+position = Vector2(180, -620)
 shape = SubResource("CapsuleShape2D_i825w")
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=729923520]
