@@ -2,30 +2,36 @@ extends State
 class_name GuardAttack
 
 @export var enemy: Guard
-@export var attack_range := 80.0
+@export var attack_range := 30.0
 @export var attack_cooldown := 1.0
 
-var fist_sprite: Sprite2D  # no @onready
+var fist: Area2D
 var cooldown_timer := 0.0
 
 func Enter():
-	fist_sprite = enemy.get_node("PunchSprite")  # resolve here instead
-	fist_sprite.visible = true
-	cooldown_timer = attack_cooldown
+	fist = enemy.get_node("PunchCollision")
+	enemy.punch_sprite.visible = true
+	fist.monitoring = true
+	cooldown_timer = 0.0  # ← was attack_cooldown, now hits immediately on enter
 	enemy.velocity.x = 0
 
 func Exit():
-	fist_sprite.visible = false  # no .stop() — Sprite2D has no stop()
+	enemy.punch_sprite.visible = false
+	fist.monitoring = false
+	
 
 func Physics_Update(delta: float) -> void:
-	fist_sprite.flip_h = enemy.animated_sprite.flip_h
-	
 	cooldown_timer -= delta
 
 	var player = enemy.get_tree().get_first_node_in_group("player")
 
 	if cooldown_timer <= 0:
 		if player and enemy.global_position.distance_to(player.global_position) <= attack_range:
-			cooldown_timer = attack_cooldown
+			# check if player is inside the fist area
+			var bodies = fist.get_overlapping_bodies()
+			if player in bodies:
+				print("player hit")
+				player.take_damage(1)
+				cooldown_timer = attack_cooldown
 		else:
-			Transitioned.emit(self, "GuardIdle")
+			Transitioned.emit(self, "GuardChase")

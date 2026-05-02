@@ -8,6 +8,7 @@
 [ext_resource type="Script" uid="uid://3ekk277dscf1" path="res://scripts/guard_idle.gd" id="6_eysg4"]
 [ext_resource type="Script" uid="uid://7ypc7io3yrj2" path="res://scripts/guard_attack.gd" id="7_eysg4"]
 [ext_resource type="Texture2D" uid="uid://eojlfyfwg0c8" path="res://assets/sprites/punch-bgless.png" id="8_fmmlp"]
+[ext_resource type="Script" uid="uid://cfqrqq4buawwq" path="res://scripts/guard_chase.gd" id="9_fmmlp"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_3cjrp"]
 animations = [{
@@ -35,6 +36,9 @@ animations = [{
 radius = 207.0
 height = 722.0
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_fmmlp"]
+size = Vector2(374.25, 300)
+
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=474725346]
 script = ExtResource("1_3cjrp")
 
@@ -46,6 +50,24 @@ animation = &"move"
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=815031163]
 position = Vector2(16, -363)
 shape = SubResource("CapsuleShape2D_ylqd4")
+
+[node name="SightRay" type="RayCast2D" parent="." unique_id=1744499185]
+position = Vector2(0, -288)
+target_position = Vector2(3038, 0)
+
+[node name="SightVisual" type="Line2D" parent="SightRay" unique_id=798348172]
+z_index = 5
+position = Vector2(0, -288)
+default_color = Color(0.12749803, 0.024160257, 0.031095594, 1)
+
+[node name="WallCheck" type="RayCast2D" parent="." unique_id=2082900286]
+position = Vector2(0, -288)
+target_position = Vector2(436, 0)
+collision_mask = 3
+
+[node name="FloorCheck" type="RayCast2D" parent="." unique_id=481336685]
+position = Vector2(0, -288)
+target_position = Vector2(446, 307)
 
 [node name="StateMachine" type="Node" parent="." unique_id=2080558199 node_paths=PackedStringArray("initial_state")]
 script = ExtResource("5_oojvo")
@@ -61,7 +83,19 @@ script = ExtResource("7_eysg4")
 enemy = NodePath("../..")
 metadata/_custom_type_script = "uid://7ypc7io3yrj2"
 
-[node name="PunchSprite" type="Sprite2D" parent="." unique_id=1916308253]
+[node name="GuardChase" type="Node" parent="StateMachine" unique_id=306400068 node_paths=PackedStringArray("enemy")]
+script = ExtResource("9_fmmlp")
+enemy = NodePath("../..")
+metadata/_custom_type_script = "uid://cfqrqq4buawwq"
+
+[node name="PunchCollision" type="Area2D" parent="." unique_id=1445652618]
+position = Vector2(371, -209)
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PunchCollision" unique_id=1812855976]
+position = Vector2(15, 2)
+shape = SubResource("RectangleShape2D_fmmlp")
+
+[node name="PunchSprite" type="Sprite2D" parent="PunchCollision" unique_id=847908387]
 visible = false
-position = Vector2(455, -221)
+position = Vector2(20, 7)
 texture = ExtResource("8_fmmlp")

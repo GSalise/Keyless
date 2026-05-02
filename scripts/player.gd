@@ -1,8 +1,9 @@
 extends CharacterBody2D
 
-
 const SPEED = 250.0
 const JUMP_VELOCITY = -350.0
+const STEALTH_SPEED = 100.0
+const STEALTH_DURATION = 5.0
 
 @onready var animated_sprite = $AnimatedSprite2D
 
@@ -20,6 +21,9 @@ var _was_running: bool = false
 var _fall_start_y: float = 0.0
 var _is_dead: bool = false
 
+var _is_stealthed: bool = false
+var _stealth_timer: float = 0.0
+
 func _ready() -> void:
 	currentHealth = maxHealth
 	_fall_start_y = global_position.y
@@ -30,37 +34,49 @@ func _physics_process(delta: float) -> void:
 	if _is_dead:
 		return
 
+	# Stealth toggle
+	if Input.is_action_just_pressed("stealth") and not _is_stealthed:
+		_is_stealthed = true
+		_stealth_timer = STEALTH_DURATION
+		set_collision_layer_value(1, false)  # hide from raycasts
+
+	# Stealth countdown
+	if _is_stealthed:
+		_stealth_timer -= delta
+		print("Stealth remaining: %.1f" % _stealth_timer)
+		if _stealth_timer <= 0.0:
+			_end_stealth()
+
 	var was_on_floor := is_on_floor()
+	var current_speed := STEALTH_SPEED if _is_stealthed else SPEED
 
 	# Add the gravity.
 	if not is_on_floor():
 		velocity += get_gravity() * delta
 
-	# Handle jump.
-	if Input.is_action_just_pressed("jump") and is_on_floor():
+	# Handle jump — disabled during stealth.
+	if Input.is_action_just_pressed("jump") and is_on_floor() and not _is_stealthed:
 		jumped.emit()
 		velocity.y = JUMP_VELOCITY
 
-	# Get the input direction and handle the movement/deceleration.
-	# As good practice, you should replace UI actions with custom gameplay actions.
 	var direction := Input.get_axis("move_left", "move_right")
-	
+
 	# sprite flipping
 	if direction > 0:
 		animated_sprite.flip_h = false
 	elif direction < 0:
 		animated_sprite.flip_h = true
-	
+
 	# sprite animations
 	if direction == 0:
 		animated_sprite.play("idle")
 	else:
 		animated_sprite.play("move")
-	
+
 	if direction:
-		velocity.x = direction * SPEED
+		velocity.x = direction * current_speed
 	else:
-		velocity.x = move_toward(velocity.x, 0, SPEED)
+		velocity.x = move_toward(velocity.x, 0, current_speed)
 
 	var is_running_now := is_on_floor() and absf(velocity.x) > 0.1
 	if is_running_now and not _was_running:
@@ -80,14 +96,19 @@ func _physics_process(delta: float) -> void:
 		if fallen_distance >= fall_damage_distance:
 			take_damage(1)
 
+func _end_stealth() -> void:
+	_is_stealthed = false
+	_stealth_timer = 0.0
+	set_collision_layer_value(1, true)  # restore visibility to raycasts
+	print("Stealth ended")
+
+# ... rest of your functions unchanged
 func _request_death(reason: StringName) -> void:
 	if _is_dead:
 		return
-
 	_is_dead = true
 	velocity = Vector2.ZERO
 	set_physics_process(false)
-	# Defer signal emission so we do not mutate scene/physics state mid-callback.
 	call_deferred("_emit_died", reason)
 
 func _emit_died(reason: StringName) -> void:
@@ -101,10 +122,8 @@ func take_damage(amount: int = 1) -> void:
 		return
 	if currentHealth <= 0:
 		return
-
 	currentHealth = max(0, currentHealth - amount)
 	health_changed.emit(currentHealth, maxHealth)
-
 	if currentHealth == 0:
 		_request_death(&"health_zero")
 
