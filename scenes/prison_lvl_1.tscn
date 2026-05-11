@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://bk82aps0ol6b1" path="res://objects/ui/hearts/heartsContainer.tscn" id="8_20nt1"]
 [ext_resource type="PackedScene" uid="uid://cevafa4g1egly" path="res://objects/guard.tscn" id="9_n2f6k"]
 [ext_resource type="Texture2D" uid="uid://bys55cgqy4rfi" path="res://assets/sprites/easter_egg.jpg" id="13_icxbi"]
-[ext_resource type="Script" path="res://scripts/door.gd" id="14_hu8qj"]
+[ext_resource type="Script" uid="uid://d4e4jywe54mhv" path="res://scripts/door.gd" id="14_hu8qj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_x3yms"]
 texture = ExtResource("1_knvex")
@@ -933,7 +933,7 @@ tile_map_data = PackedByteArray("AAAiAPX/AAAFAAMAAAAiAPb/AAAJAAMAAAAiAPf/AAAFAAM
 tile_set = SubResource("TileSet_kaxik")
 
 [node name="CharacterBody2D" parent="." unique_id=375027641 instance=ExtResource("4_f7i2g")]
-position = Vector2(-343.99988, 568)
+position = Vector2(3715, 265)
 
 [node name="WorldBorder" type="Area2D" parent="." unique_id=1707261871]
 position = Vector2(477, 729)

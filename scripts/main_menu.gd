@@ -52,7 +52,7 @@ func _ready() -> void:
 
 func _on_start_pressed() -> void:
 	get_tree().paused = false
-	get_tree().change_scene_to_file("res://scenes/prison_lvl_1.tscn")
+	get_tree().change_scene_to_file("res://scenes/prison_lvl_2.tscn")
 
 
 func _on_settings_pressed() -> void:

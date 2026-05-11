@@ -8,4 +8,3 @@ func set_key_count(count: int) -> void:
 	for _i in range(count):
 		var key_gui := KeyGuiScene.instantiate()
 		add_child(key_gui)
-
