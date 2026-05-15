@@ -1,0 +1,37 @@
+[gd_scene format=3 uid="uid://edhlpil0pfbu"]
+
+[ext_resource type="Script" uid="uid://b0crp5bgh4uy3" path="res://scripts/key_path.gd" id="1_ex2ll"]
+[ext_resource type="Texture2D" uid="uid://0w8yn2cihk7c" path="res://assets/sprites/prison/key.png" id="2_yk20f"]
+
+[sub_resource type="Curve2D" id="Curve2D_ib7rw"]
+_data = {
+"points": PackedVector2Array(0, 0, 0, 0, 51, 19, 0, 0, 0, 0, 51, -32, 0, 0, 0, 0, 51, 19)
+}
+point_count = 3
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_n2f6k"]
+size = Vector2(22.819397, 9.449188)
+
+[node name="KEY" type="Node2D" unique_id=1072074877]
+
+[node name="Path2D" type="Path2D" parent="." unique_id=198460242]
+curve = SubResource("Curve2D_ib7rw")
+
+[node name="PathFollow2D" type="PathFollow2D" parent="Path2D" unique_id=707496369]
+position = Vector2(51, 17.07664)
+rotation = -1.551191
+progress = 100.050606
+rotates = false
+script = ExtResource("1_ex2ll")
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Path2D/PathFollow2D" unique_id=1137726290]
+rotation = 1.5707964
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Path2D/PathFollow2D/StaticBody2D" unique_id=933673381]
+position = Vector2(-0.5098877, -0.4900818)
+shape = SubResource("RectangleShape2D_n2f6k")
+
+[node name="Key" type="Sprite2D" parent="Path2D/PathFollow2D/StaticBody2D" unique_id=1933515791]
+position = Vector2(1.9073486e-06, -1.847744e-06)
+scale = Vector2(0.05, 0.05)
+texture = ExtResource("2_yk20f")
