@@ -141,4 +141,4 @@ func _play_victory_sequence() -> void:
 	await get_tree().create_timer(1.0, true).timeout
 
 	Engine.time_scale = prev_time_scale
-	get_tree().change_scene_to_file(MAIN_MENU_SCENE)
+	await LevelTransition.change_scene(MAIN_MENU_SCENE)

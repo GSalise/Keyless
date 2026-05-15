@@ -1,0 +1,88 @@
+[gd_scene format=3 uid="uid://cbpl20r0j6e1r"]
+
+[ext_resource type="Texture2D" uid="uid://dxqupadkb087c" path="res://assets/sprites/wind/W401-1.png" id="1_5khtu"]
+[ext_resource type="Script" uid="uid://bs7w6y14o7o8c" path="res://scripts/wind.gd" id="1_wind_script"]
+[ext_resource type="Texture2D" uid="uid://cd5o8fduywa1i" path="res://assets/sprites/wind/W401-2.png" id="2_3yrsa"]
+[ext_resource type="Texture2D" uid="uid://bvaaymqwth41q" path="res://assets/sprites/wind/W401-3.png" id="3_05oti"]
+[ext_resource type="Texture2D" uid="uid://b625o784tp525" path="res://assets/sprites/wind/W401-4.png" id="4_xr0al"]
+[ext_resource type="Texture2D" uid="uid://bdfes11m2baat" path="res://assets/sprites/wind/W401-5.png" id="5_u1g5r"]
+[ext_resource type="Texture2D" uid="uid://ckf1rsf3ghaoy" path="res://assets/sprites/wind/W401-6.png" id="6_1adoh"]
+[ext_resource type="Texture2D" uid="uid://bjfr7jrc2gvvm" path="res://assets/sprites/wind/W401-7.png" id="7_bn4oo"]
+[ext_resource type="Texture2D" uid="uid://bsn4e1myqmk7u" path="res://assets/sprites/wind/W401-8.png" id="8_r00q3"]
+[ext_resource type="Texture2D" uid="uid://b0cf6hmtescog" path="res://assets/sprites/wind/W401-9.png" id="9_tgx5d"]
+[ext_resource type="Texture2D" uid="uid://d2eqds8hcshp7" path="res://assets/sprites/wind/W401-10.png" id="10_l7xlq"]
+[ext_resource type="Texture2D" uid="uid://cadm4fuhhyct7" path="res://assets/sprites/wind/W401-11.png" id="11_ac6p5"]
+[ext_resource type="Texture2D" uid="uid://q3wty88gm0wu" path="res://assets/sprites/wind/W401-12.png" id="12_arqku"]
+[ext_resource type="Texture2D" uid="uid://bsisyxii0pon7" path="res://assets/sprites/wind/W401-13.png" id="13_8rx2i"]
+[ext_resource type="Texture2D" uid="uid://cjnh0kkmwqpm2" path="res://assets/sprites/wind/W401-14.png" id="14_qkolv"]
+[ext_resource type="Texture2D" uid="uid://bikuf0bkb1bdg" path="res://assets/sprites/wind/W401-15.png" id="15_koonl"]
+[ext_resource type="Texture2D" uid="uid://1r7q5lrwt36a" path="res://assets/sprites/wind/W401-16.png" id="16_r02xs"]
+
+[sub_resource type="CanvasItemMaterial" id="CanvasItemMaterial_46a48"]
+blend_mode = 1
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_fdbxy"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_5khtu")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_3yrsa")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_05oti")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_xr0al")
+}, {
+"duration": 1.0,
+"texture": ExtResource("5_u1g5r")
+}, {
+"duration": 1.0,
+"texture": ExtResource("6_1adoh")
+}, {
+"duration": 1.0,
+"texture": ExtResource("7_bn4oo")
+}, {
+"duration": 1.0,
+"texture": ExtResource("8_r00q3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("9_tgx5d")
+}, {
+"duration": 1.0,
+"texture": ExtResource("10_l7xlq")
+}, {
+"duration": 1.0,
+"texture": ExtResource("11_ac6p5")
+}, {
+"duration": 1.0,
+"texture": ExtResource("12_arqku")
+}, {
+"duration": 1.0,
+"texture": ExtResource("13_8rx2i")
+}, {
+"duration": 1.0,
+"texture": ExtResource("14_qkolv")
+}, {
+"duration": 1.0,
+"texture": ExtResource("15_koonl")
+}, {
+"duration": 1.0,
+"texture": ExtResource("16_r02xs")
+}],
+"loop": true,
+"name": &"wind",
+"speed": 30.0
+}]
+
+[node name="Wind" type="Node2D" unique_id=379672249]
+script = ExtResource("1_wind_script")
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." unique_id=288339739]
+material = SubResource("CanvasItemMaterial_46a48")
+position = Vector2(0.9999962, -1)
+scale = Vector2(0.2138672, 0.24731445)
+sprite_frames = SubResource("SpriteFrames_fdbxy")
+animation = &"wind"

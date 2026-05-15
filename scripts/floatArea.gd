@@ -14,11 +14,8 @@ func _ready() -> void:
 	body_exited.connect(_on_body_exited)
 
 func _on_body_entered(body: Node) -> void:
-	print("body entered: ", body.name)
 	if body.has_method("enter_float_zone"):
 		body.enter_float_zone(self)
-	else:
-		print("WARNING: body has no enter_float_zone method")
 
 func _on_body_exited(body: Node) -> void:
 	if body.has_method("exit_float_zone"):

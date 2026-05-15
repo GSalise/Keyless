@@ -10,6 +10,16 @@ var _keys_container: HBoxContainer
 var _KeysContainerScene := preload("res://objects/ui/inventory/keys_container.tscn")
 
 const MAIN_MENU_SCENE := "res://scenes/level2.tscn"
+const DIALOGUE_TRIGGER_SCENE := preload("res://objects/ui/dialogue/dialogue_trigger.tscn")
+
+const LEVEL1_DIALOGUE_TRIGGERS := {
+	"level1_stealth_tutorial": {"position": Vector2(1200, 580), "size": Vector2(500, 220)},
+	"level1_scrawled_note": {"position": Vector2(900, 320), "size": Vector2(220, 180)},
+	"level1_rival": {"position": Vector2(2200, 520), "size": Vector2(400, 200)},
+	"level1_puzzle": {"position": Vector2(3000, 550), "size": Vector2(350, 200)},
+	"level1_exit": {"position": Vector2(3550, 580), "size": Vector2(280, 160)},
+	"hook_k": {"position": Vector2(616, 150), "size": Vector2(120, 100)},
+}
 
 var _screen_shader := preload("res://assets/shaders/screen_blur_dim.gdshader")
 var _victory_font := preload("res://assets/font/Gwenchana.ttf")
@@ -37,6 +47,23 @@ func _ready() -> void:
 		player.died.connect(_on_player_died)
 	if player.has_signal("stealth_changed") and not player.stealth_changed.is_connected(_on_player_stealth_changed):
 		player.stealth_changed.connect(_on_player_stealth_changed)
+	_setup_dialogue_triggers()
+	call_deferred("_start_level_dialogue")
+
+func _setup_dialogue_triggers() -> void:
+	var root := Node2D.new()
+	root.name = "DialogueTriggers"
+	add_child(root)
+	for title: String in LEVEL1_DIALOGUE_TRIGGERS:
+		var data: Dictionary = LEVEL1_DIALOGUE_TRIGGERS[title]
+		var trigger: Area2D = DIALOGUE_TRIGGER_SCENE.instantiate()
+		trigger.dialogue_title = title
+		trigger.trigger_size = data.get("size", Vector2(160, 120))
+		trigger.position = data.get("position", Vector2.ZERO)
+		root.add_child(trigger)
+
+func _start_level_dialogue() -> void:
+	DialogueService.play("level1_opening", player)
 
 func _on_player_health_changed(current_health: int, _max_health: int) -> void:
 	heartsContainer.updateHearts(current_health)
@@ -48,12 +75,19 @@ func on_key_collected() -> void:
 	_keys_count += 1
 	if _keys_container != null:
 		(_keys_container as Node).set_key_count(_keys_count)
+	DialogueService.play("level1_first_key", player)
 
 func on_door_entered(_body: Node) -> void:
-	if _victory_in_progress:
+	if _victory_in_progress or DialogueService.is_active:
 		return
 	if _keys_count <= 0:
 		return
+	_finish_level1()
+
+func _finish_level1() -> void:
+	if not DialogueService.has_played("level1_exit"):
+		await DialogueService.play_and_wait("level1_exit", player, true)
+	await DialogueService.play_and_wait("level1_transition", player, true)
 	_play_victory_sequence()
 
 func _setup_stealth_overlay() -> void:
@@ -141,4 +175,4 @@ func _play_victory_sequence() -> void:
 	await get_tree().create_timer(1.0, true).timeout
 
 	Engine.time_scale = prev_time_scale
-	get_tree().change_scene_to_file(MAIN_MENU_SCENE)
+	await LevelTransition.change_scene(MAIN_MENU_SCENE)

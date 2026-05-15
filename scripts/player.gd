@@ -13,6 +13,10 @@ signal jumped
 signal health_changed(current_health: int, max_health: int)
 signal died(reason: StringName)
 signal stealth_changed(active: bool)
+signal float_zone_entered(zone: Node)
+signal float_zone_exited()
+
+const FLOAT_AREA_SCRIPT := preload("res://scripts/floatArea.gd")
 
 @export var maxHealth: int = 3
 @export var fall_damage_distance: float = 350.0
@@ -68,19 +72,25 @@ func _physics_process(delta: float) -> void:
 	if _in_float_zone:
 		_float_time += delta
 
-		if _float_zone_ref.is_downwards:
-			print("float down")
-			var gravity_vec = get_gravity() * _float_zone_ref.float_gravity_scale
-			velocity += gravity_vec * delta
-			velocity.y = min(velocity.y, _float_zone_ref.max_fall_speed)
-		else:
-			print("float up")
-			var gravity_vec = get_gravity() * _float_zone_ref.float_gravity_scale
-			velocity += gravity_vec * delta
-			velocity.y += _float_zone_ref.rise_force * delta
-			velocity.y = max(velocity.y, -_float_zone_ref.max_rise_speed)
+		var zone := _float_zone_ref
+		var is_downwards: bool = bool(zone.get("is_downwards"))
+		var gravity_scale: float = float(zone.get("float_gravity_scale"))
+		var max_fall: float = float(zone.get("max_fall_speed"))
+		var max_rise: float = float(zone.get("max_rise_speed"))
+		var rise_force: float = float(zone.get("rise_force"))
+		var oscillation: float = float(zone.get("oscillation_strength"))
 
-		var bob = sin(_float_time * 1.5) * _float_zone_ref.oscillation_strength
+		if is_downwards:
+			var gravity_vec = get_gravity() * gravity_scale
+			velocity += gravity_vec * delta
+			velocity.y = min(velocity.y, max_fall)
+		else:
+			var gravity_vec = get_gravity() * gravity_scale
+			velocity += gravity_vec * delta
+			velocity.y += rise_force * delta
+			velocity.y = max(velocity.y, -max_rise)
+
+		var bob = sin(_float_time * 1.5) * oscillation
 		velocity.y += bob
 	elif not is_on_floor():
 		velocity += get_gravity() * delta
@@ -170,14 +180,17 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	_request_death(&"fall_zone")
 
 func enter_float_zone(zone: Node) -> void:
+	if zone == self or zone.get_script() != FLOAT_AREA_SCRIPT:
+		return
 	_in_float_zone = true
 	_float_zone_ref = zone
 	_float_time = 0.0
-	# Dampen any fast downward momentum on entry
 	if velocity.y > 50.0:
 		velocity.y = 50.0
+	float_zone_entered.emit(zone)
 
 func exit_float_zone() -> void:
 	_in_float_zone = false
 	_float_zone_ref = null
 	_float_time = 0.0
+	float_zone_exited.emit()
