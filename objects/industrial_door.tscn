@@ -1,0 +1,104 @@
+[gd_scene format=3 uid="uid://dfmqfset4bjdg"]
+
+[ext_resource type="Texture2D" uid="uid://dee241ui606wk" path="res://assets/sprites/sprite sheets/Entry.png" id="1_mju8s"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_i80dk"]
+atlas = ExtResource("1_mju8s")
+region = Rect2(128, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_cbxih"]
+atlas = ExtResource("1_mju8s")
+region = Rect2(160, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wi76l"]
+atlas = ExtResource("1_mju8s")
+region = Rect2(192, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_f87eh"]
+atlas = ExtResource("1_mju8s")
+region = Rect2(224, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ynejm"]
+atlas = ExtResource("1_mju8s")
+region = Rect2(0, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_62kpu"]
+atlas = ExtResource("1_mju8s")
+region = Rect2(0, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ss83v"]
+atlas = ExtResource("1_mju8s")
+region = Rect2(0, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_jhobh"]
+atlas = ExtResource("1_mju8s")
+region = Rect2(32, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_c5abv"]
+atlas = ExtResource("1_mju8s")
+region = Rect2(64, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pq3s8"]
+atlas = ExtResource("1_mju8s")
+region = Rect2(96, 0, 32, 64)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wu4pe"]
+atlas = ExtResource("1_mju8s")
+region = Rect2(128, 0, 32, 64)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_ujmj7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_i80dk")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_cbxih")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wi76l")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_f87eh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ynejm")
+}],
+"loop": false,
+"name": &"closing",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_62kpu")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ss83v")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_jhobh")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_c5abv")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_pq3s8")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_wu4pe")
+}],
+"loop": false,
+"name": &"open",
+"speed": 5.0
+}]
+
+[node name="IndustrialDoor" type="AnimatedSprite2D" unique_id=793163045]
+sprite_frames = SubResource("SpriteFrames_ujmj7")
+animation = &"closing"
+frame = 4
+frame_progress = 1.0
