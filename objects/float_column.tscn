@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://c2xr0auqmxkoh"]
+
+[ext_resource type="Script" uid="uid://d0ahhptdhqmqv" path="res://scripts/floatArea.gd" id="1_auec3"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_hrcei"]
+size = Vector2(97, 638)
+
+[node name="FloatColumn1" type="Node2D" unique_id=1196949749]
+
+[node name="Area2D" type="Area2D" parent="." unique_id=1792571138]
+monitorable = false
+script = ExtResource("1_auec3")
+is_downwards = false
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1092869204]
+position = Vector2(-43, -309)
+shape = SubResource("RectangleShape2D_hrcei")

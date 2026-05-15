@@ -22,8 +22,16 @@ var _was_running: bool = false
 var _fall_start_y: float = 0.0
 var _is_dead: bool = false
 
+# --- Stealth State ---
 var _is_stealthed: bool = false
 var _stealth_timer: float = 0.0
+
+# --- Float Zone State ---
+var _in_float_zone: bool = false
+var _float_zone_ref: Node = null
+var _float_time: float = 0.0  # tracks time for oscillation
+
+var _damage_cooldown: float = 0.0
 
 func _ready() -> void:
 	currentHealth = maxHealth
@@ -34,6 +42,9 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	if _is_dead:
 		return
+
+	if _damage_cooldown > 0.0:
+		_damage_cooldown -= delta
 
 	# Stealth toggle
 	if Input.is_action_just_pressed("stealth") and not _is_stealthed:
@@ -54,11 +65,28 @@ func _physics_process(delta: float) -> void:
 	var current_speed := STEALTH_SPEED if _is_stealthed else SPEED
 
 	# Add the gravity.
-	if not is_on_floor():
+	if _in_float_zone:
+		_float_time += delta
+
+		if _float_zone_ref.is_downwards:
+			print("float down")
+			var gravity_vec = get_gravity() * _float_zone_ref.float_gravity_scale
+			velocity += gravity_vec * delta
+			velocity.y = min(velocity.y, _float_zone_ref.max_fall_speed)
+		else:
+			print("float up")
+			var gravity_vec = get_gravity() * _float_zone_ref.float_gravity_scale
+			velocity += gravity_vec * delta
+			velocity.y += _float_zone_ref.rise_force * delta
+			velocity.y = max(velocity.y, -_float_zone_ref.max_rise_speed)
+
+		var bob = sin(_float_time * 1.5) * _float_zone_ref.oscillation_strength
+		velocity.y += bob
+	elif not is_on_floor():
 		velocity += get_gravity() * delta
 
 	# Handle jump — disabled during stealth.
-	if Input.is_action_just_pressed("jump") and is_on_floor() and not _is_stealthed:
+	if Input.is_action_just_pressed("jump") and is_on_floor() and not _is_stealthed and not _in_float_zone:
 		jumped.emit()
 		velocity.y = JUMP_VELOCITY
 
@@ -93,11 +121,15 @@ func _physics_process(delta: float) -> void:
 
 	move_and_slide()
 
-	var landed_this_frame := (not was_on_floor) and is_on_floor()
-	if landed_this_frame:
-		var fallen_distance := global_position.y - _fall_start_y
-		if fallen_distance >= fall_damage_distance:
-			take_damage(1)
+	# Take damage from platforms
+	if get_slide_collision_count() > 0:
+		for i in get_slide_collision_count():
+			var collision = get_slide_collision(i)
+			if collision.get_collider().name == "DamagePlatforms" and _damage_cooldown <= 0.0:
+				print("taking damage")
+				take_damage(1)
+				velocity.y = JUMP_VELOCITY * 0.6
+				_damage_cooldown = 1.0  # 1 second before damage can trigger again
 
 func _end_stealth() -> void:
 	_is_stealthed = false
@@ -136,3 +168,16 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body != self:
 		return
 	_request_death(&"fall_zone")
+
+func enter_float_zone(zone: Node) -> void:
+	_in_float_zone = true
+	_float_zone_ref = zone
+	_float_time = 0.0
+	# Dampen any fast downward momentum on entry
+	if velocity.y > 50.0:
+		velocity.y = 50.0
+
+func exit_float_zone() -> void:
+	_in_float_zone = false
+	_float_zone_ref = null
+	_float_time = 0.0

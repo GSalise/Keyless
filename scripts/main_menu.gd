@@ -50,9 +50,14 @@ func _ready() -> void:
 	_sync_sliders_from_audio()
 
 
+# func _on_start_pressed() -> void:
+# 	get_tree().paused = false
+# 	get_tree().change_scene_to_file("res://scenes/level2.tscn")
+
+# Go to Testing Scene 
 func _on_start_pressed() -> void:
 	get_tree().paused = false
-	get_tree().change_scene_to_file("res://scenes/prison_lvl_2.tscn")
+	get_tree().change_scene_to_file("res://scenes/testing_area_scene.tscn")
 
 
 func _on_settings_pressed() -> void:

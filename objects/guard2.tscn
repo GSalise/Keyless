@@ -1,0 +1,30 @@
+[gd_scene format=3 uid="uid://dqdswnpb51s0s"]
+
+[ext_resource type="Texture2D" uid="uid://d2nt8oufr61kw" path="res://assets/entities/asset 1/cop2/copidle.png" id="1_g3nno"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_n362f"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_g3nno")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_qcc7u"]
+radius = 207.0
+height = 722.0
+
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=350368813]
+scale = Vector2(0.05, 0.05)
+
+[node name="GuardAnimatedSprite" type="AnimatedSprite2D" parent="." unique_id=2123257790]
+position = Vector2(-12, -405)
+sprite_frames = SubResource("SpriteFrames_n362f")
+animation = &"idle"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=2049528351]
+position = Vector2(16, -363)
+shape = SubResource("CapsuleShape2D_qcc7u")

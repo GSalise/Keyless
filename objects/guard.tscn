@@ -40,6 +40,7 @@ height = 722.0
 size = Vector2(374.25, 300)
 
 [node name="CharacterBody2D" type="CharacterBody2D" unique_id=474725346 groups=["enemy"]]
+scale = Vector2(0.05, 0.05)
 script = ExtResource("1_3cjrp")
 
 [node name="GuardAnimatedSprite" type="AnimatedSprite2D" parent="." unique_id=1800571662]

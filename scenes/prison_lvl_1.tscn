@@ -7,15 +7,14 @@
 [ext_resource type="Texture2D" uid="uid://bdsgp780o6bcw" path="res://assets/tiles/Dungeon Tile Set.png" id="4_74jca"]
 [ext_resource type="PackedScene" uid="uid://cfurdengunsyc" path="res://objects/player.tscn" id="4_f7i2g"]
 [ext_resource type="Script" uid="uid://g2f8o1clogx8" path="res://scripts/prison-lvl1-platform.gd" id="6_x3yms"]
-[ext_resource type="Texture2D" uid="uid://0w8yn2cihk7c" path="res://assets/sprites/prison/key.png" id="7_08ybi"]
-[ext_resource type="Script" uid="uid://b0crp5bgh4uy3" path="res://scripts/key_path.gd" id="7_ib7rw"]
 [ext_resource type="PackedScene" uid="uid://de5nl6h5uq8th" path="res://objects/ui/death-menu/death_menu.tscn" id="8_4m4rr"]
 [ext_resource type="PackedScene" uid="uid://bk82aps0ol6b1" path="res://objects/ui/hearts/heartsContainer.tscn" id="8_20nt1"]
 [ext_resource type="PackedScene" uid="uid://cevafa4g1egly" path="res://objects/guard.tscn" id="9_n2f6k"]
+[ext_resource type="PackedScene" uid="uid://edhlpil0pfbu" path="res://objects/key.tscn" id="10_icxbi"]
 [ext_resource type="Texture2D" uid="uid://bys55cgqy4rfi" path="res://assets/sprites/easter_egg.jpg" id="13_icxbi"]
-[ext_resource type="Script" uid="uid://d4e4jywe54mhv" path="res://scripts/door.gd" id="14_hu8qj"]
+[ext_resource type="Script" path="res://scripts/door.gd" id="14_hu8qj"]
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_x3yms"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vsyo4"]
 texture = ExtResource("1_knvex")
 0:0/0 = 0
 1:0/0 = 0
@@ -34,7 +33,7 @@ texture = ExtResource("1_knvex")
 3:2/0 = 0
 4:2/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_08ybi"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_kaxik"]
 texture = ExtResource("2_f7i2g")
 0:5/size_in_atlas = Vector2i(2, 2)
 0:5/0 = 0
@@ -101,11 +100,11 @@ texture = ExtResource("2_f7i2g")
 10:9/0 = 0
 3:10/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ib7rw"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_x7qfw"]
 texture = ExtResource("3_74jca")
 0:0/0 = 0
 
-[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vsyo4"]
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_5utg6"]
 texture = ExtResource("4_74jca")
 13:10/size_in_atlas = Vector2i(1, 2)
 13:10/0 = 0
@@ -180,10 +179,10 @@ texture = ExtResource("4_74jca")
 [sub_resource type="TileSet" id="TileSet_n2f6k"]
 tile_size = Vector2i(32, 32)
 physics_layer_0/collision_layer = 1
-sources/0 = SubResource("TileSetAtlasSource_x3yms")
-sources/1 = SubResource("TileSetAtlasSource_08ybi")
-sources/2 = SubResource("TileSetAtlasSource_ib7rw")
-sources/3 = SubResource("TileSetAtlasSource_vsyo4")
+sources/0 = SubResource("TileSetAtlasSource_vsyo4")
+sources/1 = SubResource("TileSetAtlasSource_kaxik")
+sources/2 = SubResource("TileSetAtlasSource_x7qfw")
+sources/3 = SubResource("TileSetAtlasSource_5utg6")
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_tr5xq"]
 texture = ExtResource("4_74jca")
@@ -873,15 +872,6 @@ _data = {
 }
 point_count = 4
 
-[sub_resource type="Curve2D" id="Curve2D_ib7rw"]
-_data = {
-"points": PackedVector2Array(0, 0, 0, 0, 51, 19, 0, 0, 0, 0, 51, -32, 0, 0, 0, 0, 51, 19)
-}
-point_count = 3
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_n2f6k"]
-size = Vector2(22.819397, 9.449188)
-
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_vsyo4"]
 radius = 35.0
 height = 92.0
@@ -933,7 +923,7 @@ tile_map_data = PackedByteArray("AAAiAPX/AAAFAAMAAAAiAPb/AAAJAAMAAAAiAPf/AAAFAAM
 tile_set = SubResource("TileSet_kaxik")
 
 [node name="CharacterBody2D" parent="." unique_id=375027641 instance=ExtResource("4_f7i2g")]
-position = Vector2(3715, 265)
+position = Vector2(-211.99976, 533)
 
 [node name="WorldBorder" type="Area2D" parent="." unique_id=1707261871]
 position = Vector2(477, 729)
@@ -982,30 +972,8 @@ remote_path = NodePath("../../../StaticBody2D")
 
 [node name="DeathMenu" parent="CanvasLayer" unique_id=1921837078 instance=ExtResource("8_4m4rr")]
 
-[node name="KEY" type="Node2D" parent="." unique_id=1905336585]
+[node name="KEY" parent="." unique_id=1072074877 instance=ExtResource("10_icxbi")]
 position = Vector2(3640, 442)
-
-[node name="Path2D" type="Path2D" parent="KEY" unique_id=171393614]
-curve = SubResource("Curve2D_ib7rw")
-
-[node name="PathFollow2D" type="PathFollow2D" parent="KEY/Path2D" unique_id=1771426330]
-position = Vector2(51, 17.07664)
-rotation = -1.551191
-progress = 100.050606
-rotates = false
-script = ExtResource("7_ib7rw")
-
-[node name="StaticBody2D" type="StaticBody2D" parent="KEY/Path2D/PathFollow2D" unique_id=1446543856]
-rotation = 1.5707964
-
-[node name="CollisionShape2D" type="CollisionShape2D" parent="KEY/Path2D/PathFollow2D/StaticBody2D" unique_id=464026668]
-position = Vector2(-0.5098877, -0.4900818)
-shape = SubResource("RectangleShape2D_n2f6k")
-
-[node name="Key" type="Sprite2D" parent="KEY/Path2D/PathFollow2D/StaticBody2D" unique_id=332618789]
-position = Vector2(1.9073486e-06, -1.847744e-06)
-scale = Vector2(0.05, 0.05)
-texture = ExtResource("7_08ybi")
 
 [node name="Guards" type="Node2D" parent="." unique_id=2110863053]
 

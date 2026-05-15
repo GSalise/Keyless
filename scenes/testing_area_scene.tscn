@@ -1,0 +1,66 @@
+[gd_scene format=4 uid="uid://c355brbur76gq"]
+
+[ext_resource type="Script" uid="uid://qjy2w0j07f88" path="res://scripts/testing_area_scene.gd" id="1_05coh"]
+[ext_resource type="Texture2D" uid="uid://brjce64b0gkys" path="res://assets/tiles/DungeonAssets/dungeonSpritePack_Divided/walls2.png" id="1_qfb3c"]
+[ext_resource type="PackedScene" uid="uid://cfurdengunsyc" path="res://objects/player.tscn" id="2_2faii"]
+[ext_resource type="PackedScene" uid="uid://cevafa4g1egly" path="res://objects/guard.tscn" id="3_cc2lu"]
+[ext_resource type="PackedScene" uid="uid://bk82aps0ol6b1" path="res://objects/ui/hearts/heartsContainer.tscn" id="5_cjjea"]
+[ext_resource type="PackedScene" uid="uid://de5nl6h5uq8th" path="res://objects/ui/death-menu/death_menu.tscn" id="6_klkgs"]
+[ext_resource type="PackedScene" uid="uid://dqdswnpb51s0s" path="res://objects/guard2.tscn" id="7_cjjea"]
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_05coh"]
+texture = ExtResource("1_qfb3c")
+texture_region_size = Vector2i(32, 32)
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+3:0/0 = 0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+4:0/0 = 0
+4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-16, -16, 16, -16, 16, 16, -16, 16)
+5:0/0 = 0
+6:0/0 = 0
+7:0/0 = 0
+8:0/0 = 0
+9:0/0 = 0
+10:0/0 = 0
+0:1/0 = 0
+1:1/0 = 0
+2:1/0 = 0
+3:1/0 = 0
+4:1/0 = 0
+5:1/0 = 0
+6:1/0 = 0
+7:1/0 = 0
+8:1/0 = 0
+9:1/0 = 0
+
+[sub_resource type="TileSet" id="TileSet_cjjea"]
+tile_size = Vector2i(32, 32)
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_05coh")
+
+[node name="TestingAreaScene" type="Node2D" unique_id=1419582479]
+script = ExtResource("1_05coh")
+
+[node name="TileMapLayer" type="TileMapLayer" parent="." unique_id=1977086699]
+tile_map_data = PackedByteArray("AAAEAAAAAAACAAAAAAAEAAEAAAACAAAAAAAEAAIAAAACAAAAAAAFAAAAAAACAAAAAAAFAAEAAAACAAAAAAAFAAIAAAACAAAAAAAGAAAAAAACAAAAAAAGAAEAAAACAAAAAAAGAAIAAAACAAAAAAAHAAAAAAACAAAAAAAHAAEAAAACAAAAAAAHAAIAAAACAAAAAAAIAAAAAAACAAAAAAAIAAEAAAACAAAAAAAIAAIAAAACAAAAAAAJAAAAAAACAAAAAAAJAAEAAAACAAAAAAAJAAIAAAACAAAAAAAKAAAAAAACAAAAAAAKAAEAAAACAAAAAAAKAAIAAAACAAAAAAALAAAAAAACAAAAAAALAAEAAAACAAAAAAALAAIAAAACAAAAAAAMAAAAAAACAAAAAAAMAAEAAAACAAAAAAAMAAIAAAACAAAAAAANAAAAAAACAAAAAAANAAEAAAACAAAAAAANAAIAAAACAAAAAAAOAAAAAAACAAAAAAAOAAEAAAACAAAAAAAOAAIAAAACAAAAAAAPAAAAAAACAAAAAAAPAAEAAAACAAAAAAAPAAIAAAACAAAAAAAQAAAAAAACAAAAAAAQAAEAAAACAAAAAAAQAAIAAAACAAAAAAARAAAAAAACAAAAAAARAAEAAAACAAAAAAARAAIAAAACAAAAAAASAAAAAAACAAAAAAASAAEAAAACAAAAAAASAAIAAAACAAAAAAATAAAAAAACAAAAAAATAAEAAAACAAAAAAATAAIAAAACAAAAAAAUAAAAAAACAAAAAAAUAAEAAAACAAAAAAAUAAIAAAACAAAAAAAVAAAAAAACAAAAAAAVAAEAAAACAAAAAAAVAAIAAAACAAAAAAAWAAAAAAACAAAAAAAWAAEAAAACAAAAAAAWAAIAAAACAAAAAAAXAAAAAAACAAAAAAAXAAEAAAACAAAAAAAXAAIAAAACAAAAAAAYAAAAAAACAAAAAAAYAAEAAAACAAAAAAAYAAIAAAACAAAAAAAZAAAAAAACAAAAAAAZAAEAAAACAAAAAAAZAAIAAAACAAAAAAAaAAAAAAACAAAAAAAaAAEAAAACAAAAAAAaAAIAAAACAAAAAAAbAAAAAAACAAAAAAAbAAEAAAACAAAAAAAbAAIAAAACAAAAAAAcAAAAAAACAAAAAAAcAAEAAAACAAAAAAAcAAIAAAACAAAAAAAdAAAAAAACAAAAAAAdAAEAAAACAAAAAAAdAAIAAAACAAAAAAAeAAAAAAACAAAAAAAeAAEAAAACAAAAAAAeAAIAAAACAAAAAAAfAAAAAAACAAAAAAAfAAEAAAACAAAAAAAfAAIAAAACAAAAAAAgAAAAAAACAAAAAAAgAAEAAAACAAAAAAAgAAIAAAACAAAAAAAhAAAAAAACAAAAAAAhAAEAAAACAAAAAAAhAAIAAAACAAAAAAAiAAAAAAACAAAAAAAiAAEAAAACAAAAAAAiAAIAAAACAAAAAAA=")
+tile_set = SubResource("TileSet_cjjea")
+
+[node name="Player" parent="." unique_id=375027641 instance=ExtResource("2_2faii")]
+position = Vector2(616, -9)
+
+[node name="Guard1" parent="." unique_id=474725346 instance=ExtResource("3_cc2lu")]
+position = Vector2(736, -22)
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=81508146]
+
+[node name="hearts_container" parent="CanvasLayer" unique_id=946694079 instance=ExtResource("5_cjjea")]
+
+[node name="DeathMenu" parent="CanvasLayer" unique_id=1684454065 instance=ExtResource("6_klkgs")]
+
+[node name="CharacterBody2D" parent="." unique_id=350368813 instance=ExtResource("7_cjjea")]
+position = Vector2(251.99998, -5.9999995)
