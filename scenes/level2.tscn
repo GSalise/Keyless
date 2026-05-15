@@ -1806,7 +1806,6 @@ b = Vector2(-2, 54)
 script = ExtResource("1_76toy")
 
 [node name="BackgroundTiles" type="Node2D" parent="." unique_id=1981610928]
-visible = false
 position = Vector2(127, 464)
 metadata/_edit_lock_ = true
 
