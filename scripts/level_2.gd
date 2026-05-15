@@ -9,7 +9,7 @@ var _keys_count := 0
 var _keys_container: HBoxContainer
 var _KeysContainerScene := preload("res://objects/ui/inventory/keys_container.tscn")
 
-const MAIN_MENU_SCENE := "res://objects/ui/main-menu/main_menu.tscn"
+const NEXT_LEVEL_SCENE := "res://scenes/level_2_level_3_transition_world.tscn"
 
 var _screen_shader := preload("res://assets/shaders/screen_blur_dim.gdshader")
 var _victory_font := preload("res://assets/font/Gwenchana.ttf")
@@ -141,4 +141,4 @@ func _play_victory_sequence() -> void:
 	await get_tree().create_timer(1.0, true).timeout
 
 	Engine.time_scale = prev_time_scale
-	get_tree().change_scene_to_file(MAIN_MENU_SCENE)
+	get_tree().change_scene_to_file(NEXT_LEVEL_SCENE)

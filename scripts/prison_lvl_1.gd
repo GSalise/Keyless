@@ -9,7 +9,7 @@ var _keys_count := 0
 var _keys_container: HBoxContainer
 var _KeysContainerScene := preload("res://objects/ui/inventory/keys_container.tscn")
 
-const MAIN_MENU_SCENE := "res://objects/ui/main-menu/main_menu.tscn"
+const MAIN_MENU_SCENE := "res://scenes/level2.tscn"
 
 var _screen_shader := preload("res://assets/shaders/screen_blur_dim.gdshader")
 var _victory_font := preload("res://assets/font/Gwenchana.ttf")
