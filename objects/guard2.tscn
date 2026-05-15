@@ -1,7 +1,11 @@
 [gd_scene format=3 uid="uid://dqdswnpb51s0s"]
 
 [ext_resource type="Texture2D" uid="uid://d2nt8oufr61kw" path="res://assets/entities/asset 1/cop2/copidle.png" id="1_g3nno"]
-[ext_resource type="Script" uid="uid://0rayo0htm1p0" path="res://scripts/Guard2.gd" id="1_rib25"]
+[ext_resource type="Script" uid="uid://0rayo0htm1p0" path="res://scripts/guard2.gd" id="1_rib25"]
+[ext_resource type="Script" uid="uid://ctqsdugl8nti1" path="res://scripts/state_machine.gd" id="3_g3nno"]
+[ext_resource type="Script" uid="uid://di8ytxpts367e" path="res://scripts/guard2_idle.gd" id="4_n362f"]
+[ext_resource type="Script" uid="uid://dxgea3lxnjvfo" path="res://scripts/guard2_chase.gd" id="5_qcc7u"]
+[ext_resource type="Script" uid="uid://jgt0g3b4647r" path="res://scripts/guard2_shoot.gd" id="6_7ske3"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_n362f"]
 animations = [{
@@ -18,7 +22,7 @@ animations = [{
 radius = 207.0
 height = 722.0
 
-[node name="CharacterBody2D" type="CharacterBody2D" unique_id=350368813]
+[node name="CharacterBody2D" type="CharacterBody2D" unique_id=350368813 groups=["enemy"]]
 scale = Vector2(0.05, 0.05)
 script = ExtResource("1_rib25")
 
@@ -33,3 +37,42 @@ shape = SubResource("CapsuleShape2D_qcc7u")
 
 [node name="Muzzle" type="Marker2D" parent="." unique_id=539892951]
 position = Vector2(219.99998, -299.99997)
+
+[node name="SightRay" type="RayCast2D" parent="." unique_id=500993801]
+position = Vector2(79.99999, -459.99997)
+target_position = Vector2(3759.9995, -6.1035156e-05)
+
+[node name="SightVisual" type="Line2D" parent="SightRay" unique_id=683157431]
+position = Vector2(4.768371e-06, -20.000036)
+
+[node name="FloorCheck" type="RayCast2D" parent="." unique_id=986444594]
+position = Vector2(19.999998, -179.99998)
+target_position = Vector2(239.99997, 179.99997)
+
+[node name="WallCheck" type="RayCast2D" parent="." unique_id=410327947]
+position = Vector2(19.999998, -319.99997)
+target_position = Vector2(359.99997, -3.0517578e-05)
+
+[node name="Back" type="RayCast2D" parent="." unique_id=1532827326]
+position = Vector2(20, -440)
+scale = Vector2(0.99999994, 0.99999994)
+target_position = Vector2(-2880.0002, -40.00003)
+
+[node name="BackSight" type="RayCast2D" parent="Back" unique_id=364042397]
+target_position = Vector2(-3760, 0)
+
+[node name="StateMachine" type="Node" parent="." unique_id=1074522060 node_paths=PackedStringArray("initial_state")]
+script = ExtResource("3_g3nno")
+initial_state = NodePath("Guard2Idle")
+
+[node name="Guard2Idle" type="Node" parent="StateMachine" unique_id=1132694250 node_paths=PackedStringArray("enemy")]
+script = ExtResource("4_n362f")
+enemy = NodePath("../..")
+
+[node name="Guard2Chase" type="Node" parent="StateMachine" unique_id=475182330 node_paths=PackedStringArray("enemy")]
+script = ExtResource("5_qcc7u")
+enemy = NodePath("../..")
+
+[node name="Guard2Shoot" type="Node" parent="StateMachine" unique_id=1455073950 node_paths=PackedStringArray("enemy")]
+script = ExtResource("6_7ske3")
+enemy = NodePath("../..")
