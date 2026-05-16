@@ -18,5 +18,5 @@ func _on_body_entered(body: Node) -> void:
 		body.enter_float_zone(self)
 
 func _on_body_exited(body: Node) -> void:
-	if body.has_method("exit_float_zone"):
+	if body.is_in_group("player") and body.has_method("exit_float_zone"):
 		body.exit_float_zone()

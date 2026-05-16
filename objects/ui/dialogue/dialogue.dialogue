@@ -135,3 +135,26 @@ Rival Inmate: I'll show you the tunnel. You make the distraction. Fair trade.
 
 Unknown Radio Voice: The prison isn't just a prison. Keep digging.
 => END
+
+~ level2_level3_transition
+
+...: Signs give up pretending this is rehab. Wiring runs toward the perimeter like veins toward a bruise.
+—: Air thins past the boilers — metal cold, ozone and rain just out of sight.
+—: One door still claims "EXIT." Tonight I prove whether it lied.
+=> END
+
+~ level3_opening
+
+—: Upper works. Blinking floods through grime. Enough roof to pretend the sky is close.
+—: If alarms love me, they'll sing in every corridor. Quiet means they already won.
+=> END
+
+~ game_victory
+
+...: Seal breaks. Weather hits sharp — honest cold, wet night, breathing room.
+PA System (fading): All sectors secure. Contain perimeter—
+—: They'll cut the feeds, shred the tapes, bury my name deeper than the bunk I left.
+Friendly Radio Voice: You're past our lines. Doesn't matter what they print on paper. You're gone now.
+—: They sold me guilt in permanent ink. I walked out owning the only copy that proves me human.
+—: No badge. No cell. Finish line is just darkness I chose for myself.
+=> END
