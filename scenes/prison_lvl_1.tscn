@@ -923,7 +923,7 @@ tile_map_data = PackedByteArray("AAAiAPX/AAAFAAMAAAAiAPb/AAAJAAMAAAAiAPf/AAAFAAM
 tile_set = SubResource("TileSet_kaxik")
 
 [node name="CharacterBody2D" parent="." unique_id=375027641 instance=ExtResource("4_f7i2g")]
-position = Vector2(3653.9998, 233.00003)
+position = Vector2(-311, 591.99994)
 
 [node name="WorldBorder" type="Area2D" parent="." unique_id=1707261871]
 position = Vector2(477, 729)

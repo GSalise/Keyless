@@ -61,6 +61,10 @@ stealth={
 ]
 }
 
+[audio]
+
+buses/default_bus_layout="res://default_bus_layout.tres"
+
 [internationalization]
 
 locale/translations_pot_files=PackedStringArray("res://objects/ui/dialogue/dialogue.dialogue")

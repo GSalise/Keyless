@@ -90,7 +90,8 @@ func _sync_sliders_from_audio() -> void:
 func _get_bus_volume_linear(bus_name: String) -> float:
 	var bus_index := AudioServer.get_bus_index(bus_name)
 	if bus_index == -1:
-		bus_index = 0
+		push_warning("Audio bus \"%s\" not found — check default_bus_layout.tres." % bus_name)
+		return 1.0
 	return db_to_linear(AudioServer.get_bus_volume_db(bus_index))
 
 
@@ -98,5 +99,6 @@ func _set_bus_volume(bus_name: String, linear_value: float) -> void:
 	var clamped := clampf(linear_value, 0.0, 1.0)
 	var bus_index := AudioServer.get_bus_index(bus_name)
 	if bus_index == -1:
-		bus_index = 0
+		push_warning("Audio bus \"%s\" not found — volume not applied." % bus_name)
+		return
 	AudioServer.set_bus_volume_db(bus_index, linear_to_db(maxf(clamped, 0.001)))
