@@ -12,6 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://bk82aps0ol6b1" path="res://objects/ui/hearts/heartsContainer.tscn" id="10_i80dk"]
 [ext_resource type="PackedScene" uid="uid://de5nl6h5uq8th" path="res://objects/ui/death-menu/death_menu.tscn" id="11_cbxih"]
 [ext_resource type="PackedScene" uid="uid://dfmqfset4bjdg" path="res://objects/industrial_door.tscn" id="12_d24xb"]
+[ext_resource type="Script" uid="uid://1jw0wl7opogg" path="res://scripts/transition_level3_door.gd" id="13_i80dk"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_wi76l"]
 texture = ExtResource("7_g12nd")
@@ -5178,6 +5179,9 @@ texture = ExtResource("7_g12nd")
 physics_layer_0/collision_layer = 1
 sources/0 = SubResource("TileSetAtlasSource_l84wa")
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_cbxih"]
+size = Vector2(29, 63)
+
 [node name="Level2_Level3TransitionWorld" type="Node2D" unique_id=607112494]
 script = ExtResource("1_dcqky")
 
@@ -5216,3 +5220,12 @@ position = Vector2(22.999998, -6.9999995)
 
 [node name="IndustrialDoor" parent="." unique_id=793163045 instance=ExtResource("12_d24xb")]
 position = Vector2(2359, -32)
+
+[node name="Door" type="Area2D" parent="." unique_id=1330398872]
+script = ExtResource("13_i80dk")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Door" unique_id=176206726]
+position = Vector2(2358.5, -32.5)
+shape = SubResource("RectangleShape2D_cbxih")
+
+[connection signal="body_entered" from="Door" to="Door" method="_on_body_entered"]

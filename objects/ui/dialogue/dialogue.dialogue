@@ -1,0 +1,160 @@
+~ level1_opening
+
+—: They told me prison changes a person.
+—: What they meant was — it erases one.
+—: I didn't steal anything. Didn't hurt anyone.
+—: But the warden needed a closed case… and my name fit the paperwork.
+—: Three rules survive in here: Stay quiet. Stay patient. Stay invisible.
+—: The lock isn't my enemy. The guards are. Watch their rhythm. Every man has one.
+...: Guard footsteps pass in the corridor.
+—: Blink. Turn. Breathe. That's when you move.
+=> END
+
+~ level1_scrawled_note
+
+Note: Keys don't grow on trees. Maintenance corridor. — K
+—: Someone carved this deep. Not panic — intention.
+—: Either someone escaped… or someone wants me to.
+=> END
+
+~ level1_stealth_tutorial
+
+Guard: Shift report's late again. I swear this block never sleeps.
+Second Guard: Last guy who ran made it two halls before bleeding out.
+...: Laughter fades down the hall.
+—: Good. Let them believe escape is impossible. Confidence makes people blind.
+—: One mistake and they drag you back. No hearing. No record. You just… disappear into paperwork.
+—: Last month wasn't me. This month is.
+=> END
+
+~ level1_first_key
+
+...: Metal clink.
+—: A key. Small thing. Heavy promise.
+—: Funny how freedom fits in a pocket.
+—: Who leaves this where guards never look? A ghost? An ally? Or bait.
+...: Silence.
+—: Doesn't matter. A cage is already a trap.
+=> END
+
+~ level1_rival
+
+Gang Member: Hey. New fish. You walking lost… or looking for trouble?
+You: I'm looking for an exit.
+Gang Member: Everyone is. Difference is — we learned to stop dreaming.
+—: Noise brings guards. Guards bring chains. This ends fast… or not at all.
+You: I don't want enemies. Just distance.
+—: Every second here costs something. Time. Blood. Witnesses.
+=> END
+
+~ level1_puzzle
+
+...: Mechanical hum nearby.
+—: Prisons aren't built to hold people. They're built to control movement.
+—: Maintenance doors. Service routes. Forgotten passages.
+—: The guards walk the same paths every day. They stopped seeing them. I didn't.
+PA System: All units remain at assigned posts. Unauthorized movement detected in Block C.
+—: Block C is me. Good. Let them chase shadows while I become one.
+=> END
+
+~ level1_exit
+
+...: A large reinforced door blocks the way forward.
+—: There it is. Not freedom. Just a deeper layer of the lie.
+—: Tourists never see what's past this door. Only guards… and prisoners meant to stay forgotten.
+...: An alarm begins, faint and distant.
+Guard: Perimeter check! Move!
+—: Heart steady. Hands steady. One key. One chance. Don't look back.
+=> END
+
+~ level1_transition
+
+...: The door unlocks. Heavy metal groans open.
+...: Cold air replaces rot. Oil replaces sweat. The prison changes its smell… like stepping inside its lungs.
+—: Cell block cleared. Now I'm inside the machine that keeps this place alive. Boilers. Pipes. Power lines.
+—: No conversations here. Only watchers.
+—: I'm still trapped. But tonight the warden sleeps knowing everything is under control. He's wrong.
+Radio: Block C is clear. If you're listening… avoid the blue uniforms on the upper catwalk.
+—: Blue uniforms? Not guards. Something else. Whoever you are… keep talking.
+=> END
+
+~ level2_opening
+
+...: Steam vents hiss in the dark.
+—: No windows. No clocks. Just heat and shadows. Perfect place to bury mistakes.
+—: Guards here don't patrol. They hunt.
+—: Cross the floor unseen. Find their access route. Turn their system against them.
+—: They took my name. They took my years. They wrote my guilt in permanent ink. Now I write my way out.
+—: Escape first. Truth second. Revenge… if there's time.
+=> END
+
+~ level2_float_first
+
+...: The air changes — lighter, pulled in two directions at once.
+—: Steam columns. Updrafts and downdrafts fighting each other.
+—: Don't fight the current. Ride it.
+=> END
+
+~ level2_float_rise
+
+...: Warm air pushes from below.
+—: Up. Slow. Deliberate. Like the building is exhaling.
+—: Guards below can't track what they can't predict.
+=> END
+
+~ level2_float_descend
+
+...: Cold draft pulls downward.
+—: Down is faster than up. Gravity still wins in here — it just takes its time.
+—: Soft landing. No sound. No proof I passed through.
+=> END
+
+~ level2_float_deep
+
+...: Deeper into the works. Pipes scream when the boilers breathe.
+—: One wrong drift and I become another accident report.
+—: Steady. Small movements. Let the steam hide the rest.
+=> END
+
+~ hook_k
+
+K: You're not the first innocent they locked away. Just the first who listened.
+=> END
+
+~ hook_warden
+
+Warden: Order requires sacrifice. You should feel honored.
+=> END
+
+~ hook_rival
+
+Rival Inmate: I'll show you the tunnel. You make the distraction. Fair trade.
+=> END
+
+~ hook_radio
+
+Unknown Radio Voice: The prison isn't just a prison. Keep digging.
+=> END
+
+~ level2_level3_transition
+
+...: Signs give up pretending this is rehab. Wiring runs toward the perimeter like veins toward a bruise.
+—: Air thins past the boilers — metal cold, ozone and rain just out of sight.
+—: One door still claims "EXIT." Tonight I prove whether it lied.
+=> END
+
+~ level3_opening
+
+—: Upper works. Blinking floods through grime. Enough roof to pretend the sky is close.
+—: If alarms love me, they'll sing in every corridor. Quiet means they already won.
+=> END
+
+~ game_victory
+
+...: Seal breaks. Weather hits sharp — honest cold, wet night, breathing room.
+PA System (fading): All sectors secure. Contain perimeter—
+—: They'll cut the feeds, shred the tapes, bury my name deeper than the bunk I left.
+Friendly Radio Voice: You're past our lines. Doesn't matter what they print on paper. You're gone now.
+—: They sold me guilt in permanent ink. I walked out owning the only copy that proves me human.
+—: No badge. No cell. Finish line is just darkness I chose for myself.
+=> END

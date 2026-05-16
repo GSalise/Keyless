@@ -12,13 +12,17 @@ script = ExtResource("1_0rbf2")
 [node name="Run" type="AudioStreamPlayer2D" parent="." unique_id=1904692750]
 stream = ExtResource("2_0rbf2")
 volume_db = 1.0
+bus = &"SFX"
 
 [node name="Jump" type="AudioStreamPlayer2D" parent="." unique_id=382891032]
 stream = ExtResource("3_0rbf2")
+bus = &"SFX"
 
 [node name="death" type="AudioStreamPlayer2D" parent="." unique_id=1707521457]
 process_mode = 3
 stream = ExtResource("4_hv1yd")
+bus = &"SFX"
 
 [node name="victory" type="AudioStreamPlayer2D" parent="." unique_id=171106176]
 stream = ExtResource("5_46cmc")
+bus = &"SFX"

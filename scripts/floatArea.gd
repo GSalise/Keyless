@@ -14,7 +14,7 @@ func _ready() -> void:
 	body_exited.connect(_on_body_exited)
 
 func _on_body_entered(body: Node) -> void:
-	if body.is_in_group("player") and body.has_method("enter_float_zone"):
+	if body.has_method("enter_float_zone"):
 		body.enter_float_zone(self)
 
 func _on_body_exited(body: Node) -> void:

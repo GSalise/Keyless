@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://cevafa4g1egly" path="res://objects/guard.tscn" id="9_n2f6k"]
 [ext_resource type="PackedScene" uid="uid://edhlpil0pfbu" path="res://objects/key.tscn" id="10_icxbi"]
 [ext_resource type="Texture2D" uid="uid://bys55cgqy4rfi" path="res://assets/sprites/easter_egg.jpg" id="13_icxbi"]
-[ext_resource type="Script" path="res://scripts/door.gd" id="14_hu8qj"]
+[ext_resource type="Script" uid="uid://d4e4jywe54mhv" path="res://scripts/level1_door.gd" id="14_hu8qj"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_vsyo4"]
 texture = ExtResource("1_knvex")
@@ -923,7 +923,7 @@ tile_map_data = PackedByteArray("AAAiAPX/AAAFAAMAAAAiAPb/AAAJAAMAAAAiAPf/AAAFAAM
 tile_set = SubResource("TileSet_kaxik")
 
 [node name="CharacterBody2D" parent="." unique_id=375027641 instance=ExtResource("4_f7i2g")]
-position = Vector2(-211.99976, 533)
+position = Vector2(-311, 591.99994)
 
 [node name="WorldBorder" type="Area2D" parent="." unique_id=1707261871]
 position = Vector2(477, 729)
@@ -979,19 +979,15 @@ position = Vector2(3640, 442)
 
 [node name="Guard1" parent="Guards" unique_id=474725346 instance=ExtResource("9_n2f6k")]
 position = Vector2(-54.999985, 583)
-scale = Vector2(0.05, 0.05)
 
 [node name="Guard2" parent="Guards" unique_id=1859286824 instance=ExtResource("9_n2f6k")]
 position = Vector2(1694.9999, 668)
-scale = Vector2(0.05, 0.05)
 
 [node name="Guard3" parent="Guards" unique_id=1528273611 instance=ExtResource("9_n2f6k")]
 position = Vector2(2513, 477)
-scale = Vector2(0.05, 0.05)
 
 [node name="Guard4" parent="Guards" unique_id=502544199 instance=ExtResource("9_n2f6k")]
 position = Vector2(3338, 460)
-scale = Vector2(0.05, 0.05)
 
 [node name="EasterEgg" type="Node2D" parent="." unique_id=216054520]
 

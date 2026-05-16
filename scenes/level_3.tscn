@@ -13,7 +13,9 @@
 [ext_resource type="PackedScene" uid="uid://dqdswnpb51s0s" path="res://objects/guard2.tscn" id="9_vcx5n"]
 [ext_resource type="PackedScene" uid="uid://cevafa4g1egly" path="res://objects/guard.tscn" id="10_56dhn"]
 [ext_resource type="PackedScene" uid="uid://bij7cf6g77x10" path="res://objects/float_area.tscn" id="13_5xqnf"]
+[ext_resource type="Script" uid="uid://bfx2uqumbkdyo" path="res://scripts/level_3_door.gd" id="15_5xqnf"]
 [ext_resource type="PackedScene" uid="uid://edhlpil0pfbu" path="res://objects/key.tscn" id="18_w5nkq"]
+[ext_resource type="PackedScene" uid="uid://cbpl20r0j6e1r" path="res://objects/effects/wind.tscn" id="19_windlv3"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ax3dk"]
 texture = ExtResource("1_p6vls")
@@ -959,6 +961,9 @@ sources/0 = SubResource("TileSetAtlasSource_wae8j")
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_ax3dk"]
 
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_una4e"]
+size = Vector2(31, 63)
+
 [node name="Level3" type="Node2D" unique_id=660983654]
 script = ExtResource("1_wae8j")
 
@@ -1041,9 +1046,11 @@ position = Vector2(6585, 254)
 [node name="DeathMenu" parent="CanvasLayer" unique_id=458377030 instance=ExtResource("8_vcx5n")]
 
 [node name="CharacterBody2D" parent="." unique_id=375027641 instance=ExtResource("5_vcx5n")]
-position = Vector2(177.00049, -85.00003)
+position = Vector2(144.00012, -34.00006)
 collision_layer = 5
 collision_mask = 21
+
+[node name="Wind" parent="." unique_id=379672251 instance=ExtResource("19_windlv3")]
 
 [node name="Hammers" type="Node2D" parent="." unique_id=155227925]
 
@@ -1186,4 +1193,12 @@ shape = SubResource("WorldBoundaryShape2D_ax3dk")
 [node name="KEY" parent="." unique_id=1072074877 instance=ExtResource("18_w5nkq")]
 position = Vector2(1855, -188)
 
+[node name="Door" type="Area2D" parent="." unique_id=941134262]
+script = ExtResource("15_5xqnf")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Door" unique_id=1085209050]
+position = Vector2(6584.5, 254.5)
+shape = SubResource("RectangleShape2D_una4e")
+
 [connection signal="body_entered" from="WorldBorder" to="CharacterBody2D" method="_on_area_2d_body_entered"]
+[connection signal="body_entered" from="Door" to="Door" method="_on_body_entered"]
